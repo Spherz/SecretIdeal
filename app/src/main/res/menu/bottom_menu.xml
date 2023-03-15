@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item1"
+        android:title="Профиль"
+        android:orderInCategory="1"
+        />
+<!--        android:icon="@drawable/ic_item1"-->
+    <item
+        android:id="@+id/item2"
+        android:title="Дневник"
+        android:orderInCategory="2"
+        />
+<!--        android:icon="@drawable/ic_item2"-->
+    <item
+        android:id="@+id/item3"
+        android:title="Другое"
+        android:orderInCategory="3"
+        />
+<!--        android:icon="@drawable/ic_item3"-->
+
+</menu>
