@@ -76,4 +76,14 @@ public class DBManager {
         else
             return false;
     }
+
+    public String findUsernameByEmail(String email) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select fullname from USERS where email = ?", new String[] {email});
+        String user = "User not found";
+        if(cursor.moveToFirst()) user = cursor.getString(0);
+        cursor.close();
+        database.close();
+        return user;
+    }
 }

@@ -1,5 +1,9 @@
 package com.example.fooddiary;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,6 +18,14 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding loginBinding;
 
     DBManager dbManager;
+
+    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +48,9 @@ public class LoginActivity extends AppCompatActivity {
                     if(checkUserPass == true) {
                         Toast.makeText(LoginActivity.this, "Авторизация выполнена успешно", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
-                        startActivity(intent);
+                        String username = dbManager.findUsernameByEmail(email);
+                        intent.putExtra("loginStr", username);
+                        activityResultLauncher.launch(intent);
                     } else {
                         Toast.makeText(LoginActivity.this, "Неправильный логин или пароль", Toast.LENGTH_SHORT).show();
                     }
