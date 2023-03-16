@@ -64,7 +64,7 @@
         app:layout_constraintVertical_bias="0.245"
         tools:srcCompat="@drawable/no_logo" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -74,17 +74,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userImg">
 
-        <androidx.cardview.widget.CardView
+        <Button
+            android:id="@+id/btnUserWeight"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/btn_bgc"
+            android:drawableLeft="@drawable/ic_book"
+            android:drawableRight="@drawable/baseline_navigate_next_24"
+            android:text="Мой вес"
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-            <Button
-                android:id="@+id/btnUserWeight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Мой вес" />
-        </androidx.cardview.widget.CardView>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

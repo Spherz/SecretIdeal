@@ -12,5 +12,7 @@
     <color name="gray">#A1A1A1</color>
     <color name="dark_gray">#555555</color>
     <color name="light_gray">#D6D6D6</color>
+    <color name="floating_btn">#1F8023</color>
+    <color name="btn_bgc">#F1F1F1</color>
 
 </resources>
