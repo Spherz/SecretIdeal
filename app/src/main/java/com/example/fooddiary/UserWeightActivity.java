@@ -26,5 +26,12 @@ public class UserWeightActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        userWeightBinding.imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

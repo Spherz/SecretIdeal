@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.View;
@@ -29,6 +30,14 @@ public class DiaryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setDate(v);
+            }
+        });
+
+        diaryBinding.imgSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent searchIntent = new Intent(DiaryActivity.this, AddFoodActivity.class);
+                startActivity(searchIntent);
             }
         });
     }

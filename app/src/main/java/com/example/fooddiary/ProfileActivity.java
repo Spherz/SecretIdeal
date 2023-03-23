@@ -75,6 +75,10 @@ public class ProfileActivity extends AppCompatActivity {
                         Intent diaryIntent = new Intent(ProfileActivity.this, DiaryActivity.class);
                         startActivity(diaryIntent);
                         return true;
+                    case R.id.item3:
+                        Intent settingsIntent = new Intent(ProfileActivity.this, SettingsActivity.class);
+                        startActivity(settingsIntent);
+                        return true;
                 }
                 return false;
             }

@@ -4,11 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.fooddiary.databinding.ActivityChangeUsernmaeBinding;
+
 public class ChangeUsernmaeActivity extends AppCompatActivity {
+
+    private ActivityChangeUsernmaeBinding changeUsernmaeBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_usernmae);
+        changeUsernmaeBinding = ActivityChangeUsernmaeBinding.inflate(getLayoutInflater());
+        setContentView(changeUsernmaeBinding.getRoot());
     }
 }
