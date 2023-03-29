@@ -25,6 +25,14 @@ public class ManageAccountsActivity extends AppCompatActivity {
             }
         });
 
+        manageAccountsBinding.btnChangeUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent changeUsernameIntent = new Intent(ManageAccountsActivity.this, ChangeUsernmaeActivity.class);
+                startActivity(changeUsernameIntent);
+            }
+        });
+
         manageAccountsBinding.btnDeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

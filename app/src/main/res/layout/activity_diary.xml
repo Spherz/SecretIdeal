@@ -29,12 +29,23 @@
             android:id="@+id/curDateTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="Выберите дату"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgSearch"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/curDateTime"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_drop_down" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -236,10 +247,12 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/buttons_style"
                 android:backgroundTint="@color/white"
                 android:drawableLeft="@drawable/night"
                 android:drawableRight="@drawable/baseline_add"
+                android:paddingBottom="10dp"
                 android:shadowColor="#000000"
                 android:text="Перекус/Другое"
                 android:textAlignment="textStart"

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout10"
+        android:id="@+id/mainInfoLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -68,7 +68,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
         <CheckBox
-            android:id="@+id/checkBox4"
+            android:id="@+id/cbSelectFood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@null"
@@ -92,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout10">
+        app:layout_constraintTop_toBottomOf="@+id/mainInfoLayout">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/childRcList"

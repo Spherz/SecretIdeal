@@ -6,7 +6,7 @@ public class FoodItem {
     private int portion;
     private double rda;
     private double calories;
-    private List<String> nestedList;
+    private List<FoodSubItem> nestedList;
     private boolean isExpandable;
 
     public FoodItem(int portion, double rda, double calories) {
@@ -15,7 +15,14 @@ public class FoodItem {
         this.calories = calories;
     }
 
-    public FoodItem(int portion, double rda, double calories, List<String> nestedList, boolean isExpandable) {
+    public FoodItem(int portion, double rda, double calories, List<FoodSubItem> nestedList) {
+        this.portion = portion;
+        this.rda = rda;
+        this.calories = calories;
+        this.nestedList = nestedList;
+    }
+
+    public FoodItem(int portion, double rda, double calories, List<FoodSubItem> nestedList, boolean isExpandable) {
         this.portion = portion;
         this.rda = rda;
         this.calories = calories;
@@ -23,11 +30,11 @@ public class FoodItem {
         this.isExpandable = isExpandable;
     }
 
-    public List<String> getNestedList() {
+    public List<FoodSubItem> getNestedList() {
         return nestedList;
     }
 
-    public void setNestedList(List<String> nestedList) {
+    public void setNestedList(List<FoodSubItem> nestedList) {
         this.nestedList = nestedList;
     }
 

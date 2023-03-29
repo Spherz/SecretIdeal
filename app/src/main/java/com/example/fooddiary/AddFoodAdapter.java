@@ -4,16 +4,22 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodHolder> {
     private Context context;
     private ArrayList<FoodItem> foodItems;
+    private List<FoodSubItem> foodSubItems = new ArrayList<>();
 
     public AddFoodAdapter(Context context, ArrayList<FoodItem> foodItems) {
         this.context = context;
@@ -34,6 +40,28 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodH
         holder.portion.setText(String.valueOf(foodItems.get(position).getPortion()));
         holder.rda.setText(String.valueOf((int) foodItems.get(position).getRda()));
         holder.calories.setText(String.valueOf((int) foodItems.get(position).getCalories()));
+
+        boolean isExpandable = foodItem.isExpandable();
+        holder.expandableLayout.setVisibility(isExpandable ? View.VISIBLE : View.GONE);
+
+        if(isExpandable) {
+            holder.selectFood.setChecked(true);
+        } else {
+            holder.selectFood.setChecked(false);
+        }
+
+        NestedAddFoodAdapter adapter = new NestedAddFoodAdapter(foodSubItems);
+        holder.nestedSubFoodList.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext()));
+        holder.nestedSubFoodList.setHasFixedSize(true);
+        holder.nestedSubFoodList.setAdapter(adapter);
+        holder.selectFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                foodItem.setExpandable(!foodItem.isExpandable());
+                foodSubItems = foodItem.getNestedList();
+                notifyItemChanged(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -42,13 +70,22 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodH
     }
 
     public static class AddFoodHolder extends RecyclerView.ViewHolder {
-        TextView portion, rda, calories;
+        private TextView portion, rda, calories;
+        private ConstraintLayout constraintLayout;
+        private CheckBox selectFood;
+        private RelativeLayout expandableLayout;
+        private RecyclerView nestedSubFoodList;
 
         public AddFoodHolder(@NonNull View itemView) {
             super(itemView);
             portion = itemView.findViewById(R.id.txtFoodPortion);
             rda = itemView.findViewById(R.id.txtFoodRDA);
             calories = itemView.findViewById(R.id.txtFoodCalories);
+
+            constraintLayout = itemView.findViewById(R.id.mainInfoLayout);
+            expandableLayout = itemView.findViewById(R.id.expandable_layout);
+            nestedSubFoodList = itemView.findViewById(R.id.childRcList);
+            selectFood = itemView.findViewById(R.id.cbSelectFood);
         }
     }
 

@@ -17,6 +17,7 @@
             android:id="@+id/txtPortion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
             android:text="Порция"
             android:textColor="@color/splash_green"
             app:layout_constraintEnd_toEndOf="parent"
@@ -50,13 +51,18 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView11"
+            <NumberPicker
+                android:id="@+id/portionPicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Добавить колесо с выбором порции"
+                android:layout_marginLeft="15dp"
                 android:textColor="@color/design_default_color_error" />
+
+            <NumberPicker
+                android:id="@+id/partPortionPicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -84,6 +90,7 @@
                     android:id="@+id/textView29"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
                     android:text="Калории: " />
 
                 <TextView
@@ -103,6 +110,7 @@
                     android:id="@+id/textView28"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
                     android:text="Жиры:" />
 
                 <TextView
@@ -122,6 +130,7 @@
                     android:id="@+id/textView36"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
                     android:layout_weight="0"
                     android:text="Углев:" />
 
@@ -143,6 +152,7 @@
                     android:id="@+id/textView40"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
                     android:text="Белок:" />
 
                 <TextView

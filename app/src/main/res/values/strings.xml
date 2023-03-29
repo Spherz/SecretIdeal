@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FoodDiary</string>
+    <string name="app_name">SecretIdeal</string>
     <string name="delete_acc_desc">
         <p>Удаление аккаунта приведет к удалению всех ваших</p>
         <p>личных данных и данных состояния здоровья,</p>

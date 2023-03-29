@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ededf5"
     tools:context=".RDAActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout9"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#f5f8ff"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,36 +59,73 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="15dp"
             android:text="ПОСЛЕДНЕЕ РСК" />
 
-        <Button
+        <RelativeLayout
             android:id="@+id/btnSelectDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="2dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/buttons_style"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="Дата"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null">
 
-        <Button
+            <TextView
+                android:id="@+id/textView57"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Дата" />
+
+            <TextView
+                android:id="@+id/textView58"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                android:text="TextView" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/btnSelectRda"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="2dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/buttons_style"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="РСК"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null">
+
+            <TextView
+                android:id="@+id/textView59"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="РСК" />
+
+            <TextView
+                android:id="@+id/textView60"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                android:text="TextView" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/textView37"
@@ -96,47 +135,131 @@
             android:layout_marginRight="15dp"
             android:text="ОБО МНЕ" />
 
-        <Button
+        <RelativeLayout
             android:id="@+id/btnSelectAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="2dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/buttons_style"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="Возраст"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null">
 
-        <Button
+            <TextView
+                android:id="@+id/textView61"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Возраст" />
+
+            <TextView
+                android:id="@+id/textView62"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="15dp"
+                android:layout_toStartOf="@+id/imageView12"
+                android:text="TextView" />
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                app:srcCompat="@drawable/baseline_navigate_next_24" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/btnSelectGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="2dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/buttons_style"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="Пол"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null">
 
-        <Button
+            <TextView
+                android:id="@+id/textView63"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Пол" />
+
+            <TextView
+                android:id="@+id/textView64"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="15dp"
+                android:layout_toStartOf="@+id/imageView13"
+                android:text="TextView" />
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                app:srcCompat="@drawable/baseline_navigate_next_24" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/btnSelectActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="2dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/buttons_style"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="Активность"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null">
+
+            <TextView
+                android:id="@+id/textView65"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Активность" />
+
+            <TextView
+                android:id="@+id/textView66"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="15dp"
+                android:layout_toStartOf="@+id/imageView14"
+                android:text="TextView" />
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                app:srcCompat="@drawable/baseline_navigate_next_24" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/textView42"
@@ -146,33 +269,89 @@
             android:layout_marginRight="15dp"
             android:text="ВЕС" />
 
-        <Button
+        <RelativeLayout
             android:id="@+id/btnWeightDimensions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="2dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/buttons_style"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="Измерения"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null">
 
-        <Button
+            <TextView
+                android:id="@+id/textView67"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Измерения" />
+
+            <TextView
+                android:id="@+id/textView68"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="15dp"
+                android:layout_toStartOf="@+id/imageView15"
+                android:text="TextView" />
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                app:srcCompat="@drawable/baseline_navigate_next_24" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/btnWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="2dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/buttons_style"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="Вес"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null">
+
+            <TextView
+                android:id="@+id/textView69"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Вес" />
+
+            <TextView
+                android:id="@+id/textView70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="15dp"
+                android:layout_toStartOf="@+id/imageView16"
+                android:text="TextView" />
+
+            <ImageView
+                android:id="@+id/imageView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                app:srcCompat="@drawable/baseline_navigate_next_24" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/textView43"
@@ -182,33 +361,89 @@
             android:layout_marginRight="15dp"
             android:text="РОСТ" />
 
-        <Button
+        <RelativeLayout
             android:id="@+id/btnHeightDimensions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="2dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/buttons_style"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="Измерения"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null">
 
-        <Button
+            <TextView
+                android:id="@+id/textView71"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Измерения" />
+
+            <TextView
+                android:id="@+id/textView72"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="15dp"
+                android:layout_toStartOf="@+id/imageView17"
+                android:text="TextView" />
+
+            <ImageView
+                android:id="@+id/imageView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                app:srcCompat="@drawable/baseline_navigate_next_24" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/btnHeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="2dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/buttons_style"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="Рост"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null">
+
+            <TextView
+                android:id="@+id/textView73"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Вес" />
+
+            <TextView
+                android:id="@+id/textView74"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="15dp"
+                android:layout_toStartOf="@+id/imageView18"
+                android:text="TextView" />
+
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                app:srcCompat="@drawable/baseline_navigate_next_24" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/textView44"
@@ -218,19 +453,37 @@
             android:layout_marginRight="15dp"
             android:text="ЦЕЛЬ ДИЕТЫ" />
 
-        <Button
+        <RelativeLayout
             android:id="@+id/btnGoal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="2dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/buttons_style"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="Цель диеты"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null">
+
+            <TextView
+                android:id="@+id/txtGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Потеря веса" />
+
+            <ImageView
+                android:id="@+id/imageView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                app:srcCompat="@drawable/baseline_navigate_next_24" />
+        </RelativeLayout>
     </LinearLayout>
 
     <RelativeLayout
@@ -247,8 +500,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/buttons_style"
             android:text="Вычислить"
             android:textAllCaps="false"

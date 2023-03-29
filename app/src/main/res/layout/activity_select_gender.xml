@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DeleteUserActivity">
+    tools:context=".SelectGenderActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout9"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#f5f8ff"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,12 +30,12 @@
             app:srcCompat="@drawable/baseline_arrow_back_ios_new_24" />
 
         <TextView
-            android:id="@+id/txtManageAccount"
+            android:id="@+id/txtRDA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="5dp"
-            android:text="Удалить учетную запись"
+            android:text="Выберите пол"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -43,57 +44,45 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
 
-        <TextView
-            android:id="@+id/txtWarning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="ПРЕДУПРЕЖДЕНИЕ"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="24dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtWarning">
+            android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView41"
-                android:layout_width="match_parent"
+                android:id="@+id/textView75"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:text="@string/delete_acc_desc"
+                android:layout_marginLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Женский"
                 android:textColor="@color/black" />
+        </RelativeLayout>
 
-            <Button
-                android:id="@+id/btnDelete"
-                android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp">
+
+            <TextView
+                android:id="@+id/textView76"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/buttons_style"
-                android:text="Удалить"
-                android:textAllCaps="false"
-                android:textColor="@color/design_default_color_error"
-                app:backgroundTint="@null" />
-        </LinearLayout>
+                android:layout_marginLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Мужской"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

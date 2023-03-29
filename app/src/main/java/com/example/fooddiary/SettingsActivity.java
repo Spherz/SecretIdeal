@@ -26,6 +26,14 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        settingsBinding.btnRDA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent rdaIntent = new Intent(SettingsActivity.this, RDAActivity.class);
+                startActivity(rdaIntent);
+            }
+        });
+
         settingsBinding.imgPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

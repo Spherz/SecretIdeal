@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ededf5"
     tools:context=".ManageAccountsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout9"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#f5f8ff"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,56 +68,118 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtManageUsername">
+            app:layout_constraintTop_toBottomOf="@+id/txtManageUsername"
+            app:layout_constraintVertical_bias="0.29000002">
 
-            <Button
+            <RelativeLayout
                 android:id="@+id/btnManageEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/buttons_style"
+                android:background="@color/white"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:text="Электронная почта"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
-                app:backgroundTint="@null" />
+                app:backgroundTint="@null">
 
-            <Button
-                android:id="@+id/button3"
+                <TextView
+                    android:id="@+id/textView53"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:text="test@gmail.com" />
+
+                <TextView
+                    android:id="@+id/textView54"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:text="Электронная Почта"
+                    android:textColor="@color/black" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/btnChangeUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/buttons_style"
+                android:background="@color/white"
                 android:drawableRight="@drawable/baseline_navigate_next_24"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:text="Сменить Имя Пользователя"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
-                app:backgroundTint="@null" />
+                app:backgroundTint="@null">
 
-            <Button
+                <TextView
+                    android:id="@+id/textView55"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:text="Сменить имя пользователя"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    app:srcCompat="@drawable/baseline_navigate_next_24" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/btnDeleteUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="80dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/buttons_style"
+                android:background="@color/white"
                 android:drawableRight="@drawable/baseline_navigate_next_24"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:text="Удалить учетную запись"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
-                app:backgroundTint="@null" />
+                app:backgroundTint="@null">
+
+                <TextView
+                    android:id="@+id/textView56"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:text="Удалить учетную запись"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/imageView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    app:srcCompat="@drawable/baseline_navigate_next_24" />
+            </RelativeLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
