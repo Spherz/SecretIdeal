@@ -1,9 +1,11 @@
 package com.example.fooddiary;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.View;
@@ -20,6 +22,8 @@ public class AddUserWeightActivity extends AppCompatActivity {
     private ActivityAddUserWeightBinding addUserWeightBinding;
 
     Calendar dateAndTime = Calendar.getInstance();
+
+    double editedWeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +51,10 @@ public class AddUserWeightActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 double defaultWeight = Double.parseDouble(addUserWeightBinding.txtEditedWeight.getText().toString());
-                double res = defaultWeight + 0.1;
+                editedWeight = defaultWeight + 0.1;
                 System.out.println(defaultWeight);
-                addUserWeightBinding.txtEditedWeight.setText(String.valueOf(String.format("%.1f",res)));
+                addUserWeightBinding.txtEditedWeight.setText(String.valueOf(String.format("%.1f",editedWeight)));
+                setResult(RESULT_OK, getIntent());
             }
         });
 
@@ -57,8 +62,17 @@ public class AddUserWeightActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 double weight = Double.parseDouble(addUserWeightBinding.txtEditedWeight.getText().toString());
-                double res = weight - 0.1;
-                addUserWeightBinding.txtEditedWeight.setText(String.valueOf(String.format("%.1f",res)));
+                editedWeight = weight - 0.1;
+                addUserWeightBinding.txtEditedWeight.setText(String.valueOf(String.format("%.1f",editedWeight)));
+            }
+        });
+
+        addUserWeightBinding.imgSubmitWeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getIntent().putExtra("editedWeight", String.valueOf(String.format("%.1f", editedWeight)));
+                setResult(RESULT_OK, getIntent());
+                finish();
             }
         });
     }

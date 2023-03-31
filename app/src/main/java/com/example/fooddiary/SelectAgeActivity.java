@@ -3,6 +3,7 @@ package com.example.fooddiary;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.NumberPicker;
 
 import com.example.fooddiary.databinding.ActivitySelectAgeBinding;
@@ -27,5 +28,14 @@ public class SelectAgeActivity extends AppCompatActivity {
 
             }
         });
+
+        selectAgeBinding.imgPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
     }
 }

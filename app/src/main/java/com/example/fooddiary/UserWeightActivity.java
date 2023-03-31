@@ -1,5 +1,6 @@
 package com.example.fooddiary;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -23,7 +24,7 @@ public class UserWeightActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserWeightActivity.this, AddUserWeightActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 100);
             }
         });
 
@@ -33,5 +34,14 @@ public class UserWeightActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 100 && resultCode == RESULT_OK && data != null) {
+            userWeightBinding.txtWeight.setText(data.getStringExtra("editedWeight"));
+        }
     }
 }

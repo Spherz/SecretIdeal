@@ -1,5 +1,6 @@
 package com.example.fooddiary;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -22,7 +23,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent selectAgeIntent = new Intent(RDAActivity.this, SelectAgeActivity.class);
-                startActivity(selectAgeIntent);
+//                startActivityForResult(selectAgeIntent); TODO: edit
             }
         });
 
@@ -73,5 +74,30 @@ public class RDAActivity extends AppCompatActivity {
                 startActivity(goalIntent);
             }
         });
+
+        rdaActivityBinding.btnWeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent weightIntent = new Intent(RDAActivity.this, SelectWeightActivity.class);
+                startActivity(weightIntent);
+            }
+        });
+
+        rdaActivityBinding.btnHeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent heightIntent = new Intent(RDAActivity.this, SelectHeightActivity.class);
+                startActivity(heightIntent);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 100 && resultCode == RESULT_OK && data != null) {
+
+        }
     }
 }
