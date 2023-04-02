@@ -29,6 +29,15 @@ public class SelectAgeActivity extends AppCompatActivity {
             }
         });
 
+        selectAgeBinding.txtSelectAge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getIntent().putExtra("userAge", String.valueOf(selectAgeBinding.agePicker.getValue()));
+                setResult(RESULT_OK, getIntent());
+                finish();
+            }
+        });
+
         selectAgeBinding.imgPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

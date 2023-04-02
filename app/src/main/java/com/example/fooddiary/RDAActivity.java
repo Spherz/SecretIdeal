@@ -23,7 +23,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent selectAgeIntent = new Intent(RDAActivity.this, SelectAgeActivity.class);
-//                startActivityForResult(selectAgeIntent); TODO: edit
+                startActivityForResult(selectAgeIntent, 100);
             }
         });
 
@@ -31,7 +31,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent selectGenderIntent = new Intent(RDAActivity.this, SelectGenderActivity.class);
-                startActivity(selectGenderIntent);
+                startActivityForResult(selectGenderIntent, 100);
             }
         });
 
@@ -39,7 +39,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent selectActivityIntent = new Intent(RDAActivity.this, SelectActivity.class);
-                startActivity(selectActivityIntent);
+                startActivityForResult(selectActivityIntent, 100);
             }
         });
 
@@ -47,7 +47,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent selectDimens = new Intent(RDAActivity.this, SelectDimensionActivity.class);
-                startActivity(selectDimens);
+                startActivityForResult(selectDimens, 100);
             }
         });
 
@@ -55,7 +55,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent selectWeight = new Intent(RDAActivity.this, SelectWeightActivity.class);
-                startActivity(selectWeight);
+                startActivityForResult(selectWeight, 100);
             }
         });
 
@@ -63,7 +63,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent selectHeight = new Intent(RDAActivity.this, SelectHeightActivity.class);
-                startActivity(selectHeight);
+                startActivityForResult(selectHeight,100);
             }
         });
 
@@ -71,23 +71,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent goalIntent = new Intent(RDAActivity.this, SelectGoalActivity.class);
-                startActivity(goalIntent);
-            }
-        });
-
-        rdaActivityBinding.btnWeight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent weightIntent = new Intent(RDAActivity.this, SelectWeightActivity.class);
-                startActivity(weightIntent);
-            }
-        });
-
-        rdaActivityBinding.btnHeight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent heightIntent = new Intent(RDAActivity.this, SelectHeightActivity.class);
-                startActivity(heightIntent);
+                startActivityForResult(goalIntent, 100);
             }
         });
     }
@@ -96,8 +80,21 @@ public class RDAActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == 100 && resultCode == RESULT_OK && data != null) {
+        String[] userRda = {data.getStringExtra("userAge"), data.getStringExtra("userGender"),
+                            data.getStringExtra("userActivity"), data.getStringExtra("userDimensions"),
+                            data.getStringExtra("userWeight"), data.getStringExtra("userHeight"),
+                            data.getStringExtra("userGoal")};
 
+        System.out.println(data);
+
+        if(requestCode == 100 && resultCode == RESULT_OK && data != null) {
+            rdaActivityBinding.txtUserAge.setText(userRda[0]);
+            rdaActivityBinding.txtUserGender.setText(userRda[1]);
+            rdaActivityBinding.txtUserActivity.setText(userRda[2]);
+            rdaActivityBinding.txtUserWeightDimensions.setText(userRda[3]);
+            rdaActivityBinding.txtUserWeight.setText(userRda[4]);
+            rdaActivityBinding.txtUserHeight.setText(userRda[5]);
+            rdaActivityBinding.txtGoal.setText(userRda[6]);
         }
     }
 }

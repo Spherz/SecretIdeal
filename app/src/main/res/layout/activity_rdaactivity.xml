@@ -158,7 +158,7 @@
                 android:text="Возраст" />
 
             <TextView
-                android:id="@+id/textView62"
+                android:id="@+id/txtUserAge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -200,7 +200,7 @@
                 android:text="Пол" />
 
             <TextView
-                android:id="@+id/textView64"
+                android:id="@+id/txtUserGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -242,7 +242,7 @@
                 android:text="Активность" />
 
             <TextView
-                android:id="@+id/textView66"
+                android:id="@+id/txtUserActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -292,7 +292,7 @@
                 android:text="Измерения" />
 
             <TextView
-                android:id="@+id/textView68"
+                android:id="@+id/txtUserWeightDimensions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -334,7 +334,7 @@
                 android:text="Вес" />
 
             <TextView
-                android:id="@+id/textView70"
+                android:id="@+id/txtUserWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -426,7 +426,7 @@
                 android:text="Рост" />
 
             <TextView
-                android:id="@+id/textView74"
+                android:id="@+id/txtUserHeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
