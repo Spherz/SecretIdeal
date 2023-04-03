@@ -19,10 +19,15 @@ public class SettingsActivity extends AppCompatActivity {
         settingsBinding = ActivitySettingsBinding.inflate(getLayoutInflater());
         setContentView(settingsBinding.getRoot());
 
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+
+        System.out.println(username);
         settingsBinding.btnManageAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent settingsIntent = new Intent(SettingsActivity.this, ManageAccountsActivity.class);
+                settingsIntent.putExtra("username", username);
                 startActivity(settingsIntent);
             }
         });

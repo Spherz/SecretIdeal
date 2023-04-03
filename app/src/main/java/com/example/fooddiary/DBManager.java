@@ -86,4 +86,6 @@ public class DBManager {
         database.close();
         return user;
     }
+
+    // TODO: Добавить метод для изменения имени пользователя
 }

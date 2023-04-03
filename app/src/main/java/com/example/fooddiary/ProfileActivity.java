@@ -67,16 +67,21 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        profileBinding.bottomNav.setSelectedItemId(R.id.item1);
+
         profileBinding.bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
+                    case R.id.item1:
+                        return true;
                     case R.id.item2:
                         Intent diaryIntent = new Intent(ProfileActivity.this, DiaryActivity.class);
-                        startActivity(diaryIntent);
+                        startActivityForResult(diaryIntent, 200);
                         return true;
                     case R.id.item3:
                         Intent settingsIntent = new Intent(ProfileActivity.this, SettingsActivity.class);
+                        settingsIntent.putExtra("username", username);
                         startActivity(settingsIntent);
                         return true;
                 }
@@ -86,4 +91,5 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     }
+
 }

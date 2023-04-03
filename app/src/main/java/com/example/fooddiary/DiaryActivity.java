@@ -1,5 +1,6 @@
 package com.example.fooddiary;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -7,11 +8,13 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
 import com.example.fooddiary.databinding.ActivityDiaryBinding;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.Calendar;
 
@@ -25,6 +28,23 @@ public class DiaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         diaryBinding = ActivityDiaryBinding.inflate(getLayoutInflater());
         setContentView(diaryBinding.getRoot());
+
+        diaryBinding.bottomNavigationView.setSelectedItemId(R.id.item2);
+
+        diaryBinding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.item1:
+                        setResult(RESULT_OK, getIntent());
+                        finish();
+                        return true;
+                    case R.id.item2:
+                        return true;
+                }
+                return false;
+            }
+        });
 
         diaryBinding.curDateTime.setOnClickListener(new View.OnClickListener() {
             @Override

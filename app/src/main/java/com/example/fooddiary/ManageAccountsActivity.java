@@ -18,6 +18,10 @@ public class ManageAccountsActivity extends AppCompatActivity {
         manageAccountsBinding = ActivityManageAccountsBinding.inflate(getLayoutInflater());
         setContentView(manageAccountsBinding.getRoot());
 
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+
+        System.out.println(username);
         manageAccountsBinding.imgPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,6 +33,7 @@ public class ManageAccountsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent changeUsernameIntent = new Intent(ManageAccountsActivity.this, ChangeUsernmaeActivity.class);
+                changeUsernameIntent.putExtra("username", username);
                 startActivity(changeUsernameIntent);
             }
         });
@@ -40,5 +45,7 @@ public class ManageAccountsActivity extends AppCompatActivity {
                 startActivity(deleteUserIntent);
             }
         });
+
+        manageAccountsBinding.txtManageUsername.setText(username);
     }
 }

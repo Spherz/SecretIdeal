@@ -24,7 +24,7 @@
             android:layout_marginTop="4dp"
             android:text="Завтрак"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.002"
+            app:layout_constraintHorizontal_bias="0.044"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,10 +32,9 @@
             android:id="@+id/txtCurrentDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
             android:textSize="8sp"
             app:layout_constraintEnd_toEndOf="@+id/txtBreakfast"
-            app:layout_constraintHorizontal_bias="0.681"
+            app:layout_constraintHorizontal_bias="0.277"
             app:layout_constraintStart_toStartOf="@+id/txtBreakfast"
             app:layout_constraintTop_toBottomOf="@+id/txtBreakfast" />
 

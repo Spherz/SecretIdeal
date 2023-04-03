@@ -31,7 +31,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent selectGenderIntent = new Intent(RDAActivity.this, SelectGenderActivity.class);
-                startActivityForResult(selectGenderIntent, 100);
+                startActivityForResult(selectGenderIntent, 200);
             }
         });
 
@@ -74,6 +74,13 @@ public class RDAActivity extends AppCompatActivity {
                 startActivityForResult(goalIntent, 100);
             }
         });
+
+        rdaActivityBinding.imgPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -85,16 +92,16 @@ public class RDAActivity extends AppCompatActivity {
                             data.getStringExtra("userWeight"), data.getStringExtra("userHeight"),
                             data.getStringExtra("userGoal")};
 
-        System.out.println(data);
-
         if(requestCode == 100 && resultCode == RESULT_OK && data != null) {
             rdaActivityBinding.txtUserAge.setText(userRda[0]);
+//            rdaActivityBinding.txtUserGender.setText(userRda[1]);
+//            rdaActivityBinding.txtUserActivity.setText(userRda[2]);
+//            rdaActivityBinding.txtUserWeightDimensions.setText(userRda[3]);
+//            rdaActivityBinding.txtUserWeight.setText(userRda[4]);
+//            rdaActivityBinding.txtUserHeight.setText(userRda[5]);
+//            rdaActivityBinding.txtGoal.setText(userRda[6]);
+        } else if(requestCode == 200 && resultCode == RESULT_OK && data != null) {
             rdaActivityBinding.txtUserGender.setText(userRda[1]);
-            rdaActivityBinding.txtUserActivity.setText(userRda[2]);
-            rdaActivityBinding.txtUserWeightDimensions.setText(userRda[3]);
-            rdaActivityBinding.txtUserWeight.setText(userRda[4]);
-            rdaActivityBinding.txtUserHeight.setText(userRda[5]);
-            rdaActivityBinding.txtGoal.setText(userRda[6]);
         }
     }
 }
