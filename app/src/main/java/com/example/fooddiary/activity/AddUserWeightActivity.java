@@ -1,6 +1,5 @@
-package com.example.fooddiary;
+package com.example.fooddiary.activity;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -13,13 +12,15 @@ import android.widget.DatePicker;
 import android.widget.TimePicker;
 
 import com.example.fooddiary.databinding.ActivityAddUserWeightBinding;
+import com.example.fooddiary.util.DBManager;
 
-import java.sql.Time;
 import java.util.Calendar;
 
 public class AddUserWeightActivity extends AppCompatActivity {
 
     private ActivityAddUserWeightBinding addUserWeightBinding;
+
+    DBManager dbManager;
 
     Calendar dateAndTime = Calendar.getInstance();
 
@@ -32,6 +33,14 @@ public class AddUserWeightActivity extends AppCompatActivity {
         setContentView(addUserWeightBinding.getRoot());
 
         setInitialDateTime();
+
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+
+        dbManager = new DBManager(this);
+        dbManager.open();
+
+        dbManager.updateUserWeight(username, String.valueOf(editedWeight));
 
         addUserWeightBinding.imgCancelWeight.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +59,7 @@ public class AddUserWeightActivity extends AppCompatActivity {
         addUserWeightBinding.btnAddWeight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double defaultWeight = Double.parseDouble(addUserWeightBinding.txtEditedWeight.getText().toString());
+                double defaultWeight = Double.parseDouble(addUserWeightBinding.txtEditedWeight.getText().toString().replace(",","."));
                 editedWeight = defaultWeight + 0.1;
                 System.out.println(defaultWeight);
                 addUserWeightBinding.txtEditedWeight.setText(String.valueOf(String.format("%.1f",editedWeight)));
@@ -61,7 +70,7 @@ public class AddUserWeightActivity extends AppCompatActivity {
         addUserWeightBinding.btnRemoveWeight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double weight = Double.parseDouble(addUserWeightBinding.txtEditedWeight.getText().toString());
+                double weight = Double.parseDouble(addUserWeightBinding.txtEditedWeight.getText().toString().replace(",","."));
                 editedWeight = weight - 0.1;
                 addUserWeightBinding.txtEditedWeight.setText(String.valueOf(String.format("%.1f",editedWeight)));
             }

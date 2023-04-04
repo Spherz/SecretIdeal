@@ -1,9 +1,11 @@
-package com.example.fooddiary;
+package com.example.fooddiary.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.fooddiary.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

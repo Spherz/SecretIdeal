@@ -1,4 +1,4 @@
-package com.example.fooddiary;
+package com.example.fooddiary.model;
 
 public class FoodSubItem {
     private int portion;

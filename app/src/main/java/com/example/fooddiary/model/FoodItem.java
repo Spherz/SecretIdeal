@@ -1,4 +1,4 @@
-package com.example.fooddiary;
+package com.example.fooddiary.model;
 
 import java.util.List;
 

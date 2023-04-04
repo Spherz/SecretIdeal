@@ -1,4 +1,4 @@
-package com.example.fooddiary;
+package com.example.fooddiary.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.fooddiary.model.FoodSubItem;
+import com.example.fooddiary.R;
 
 import java.util.List;
 

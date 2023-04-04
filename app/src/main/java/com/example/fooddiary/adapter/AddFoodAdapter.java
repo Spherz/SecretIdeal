@@ -1,4 +1,4 @@
-package com.example.fooddiary;
+package com.example.fooddiary.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.fooddiary.model.FoodItem;
+import com.example.fooddiary.model.FoodSubItem;
+import com.example.fooddiary.R;
 
 import java.util.ArrayList;
 import java.util.List;

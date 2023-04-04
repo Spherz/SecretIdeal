@@ -1,4 +1,4 @@
-package com.example.fooddiary;
+package com.example.fooddiary.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import com.example.fooddiary.R;
 import com.example.fooddiary.databinding.ActivityDiaryBinding;
 import com.google.android.material.navigation.NavigationBarView;
 

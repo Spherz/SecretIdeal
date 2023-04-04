@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DiaryActivity">
+    tools:context=".activity.DiaryActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -203,6 +203,7 @@
                 android:shadowColor="#000000"
                 android:text="Завтрак"
                 android:textAlignment="textStart"
+                android:textAllCaps="false"
                 android:textColor="#000000"
                 app:backgroundTint="@null" />
 
@@ -220,6 +221,7 @@
                 android:shadowColor="#000000"
                 android:text="Обед"
                 android:textAlignment="textStart"
+                android:textAllCaps="false"
                 android:textColor="#000000"
                 app:backgroundTint="@null" />
 
@@ -237,6 +239,7 @@
                 android:shadowColor="#000000"
                 android:text="Ужин"
                 android:textAlignment="textStart"
+                android:textAllCaps="false"
                 android:textColor="#000000"
                 app:backgroundTint="@null" />
 
@@ -256,6 +259,7 @@
                 android:shadowColor="#000000"
                 android:text="Перекус/Другое"
                 android:textAlignment="textStart"
+                android:textAllCaps="false"
                 android:textColor="#000000"
                 app:backgroundTint="@null" />
         </LinearLayout>

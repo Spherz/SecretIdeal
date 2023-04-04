@@ -1,4 +1,4 @@
-package com.example.fooddiary;
+package com.example.fooddiary.util;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -87,5 +87,39 @@ public class DBManager {
         return user;
     }
 
+    public void updateUserRda(String username, String age, String gender, String activity, String weight,
+                              String height, String goal) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("update USERS set age = ?, gender = ?, activity = ?, weight = ?, height = ?, goal = ? where fullname = ?", new String[] {age, gender, activity, weight, height, goal, username});
+        cursor.close();
+        database.close();
+    }
+
+    public String findByWeight(String username) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select weight from USERS where fullname = ?", new String[] {username});
+        String weight = "User weight not found";
+        if (cursor.moveToFirst()) weight = cursor.getString(0);
+        cursor.close();
+        database.close();
+        return weight;
+    }
     // TODO: Добавить метод для изменения имени пользователя
+    public void updateUsername(String oldUsername, String username) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("update USERS set username = ? where username = ?", new String[] {oldUsername, username});
+        cursor.close();
+        database.close();
+    }
+
+    public void deleteUser(String username) {
+        database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper.FULLNAME + "=" + username, null);
+    }
+
+    public void updateUserWeight(String username, String weight) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("update USERS set weight = ? WHERE username = ?", new String[] {weight, username});
+        cursor.close();
+        database.close();
+    }
 }

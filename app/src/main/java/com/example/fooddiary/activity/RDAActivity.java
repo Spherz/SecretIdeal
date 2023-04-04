@@ -1,4 +1,4 @@
-package com.example.fooddiary;
+package com.example.fooddiary.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,7 +39,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent selectActivityIntent = new Intent(RDAActivity.this, SelectActivity.class);
-                startActivityForResult(selectActivityIntent, 100);
+                startActivityForResult(selectActivityIntent, 300);
             }
         });
 
@@ -47,7 +47,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent selectDimens = new Intent(RDAActivity.this, SelectDimensionActivity.class);
-                startActivityForResult(selectDimens, 100);
+                startActivityForResult(selectDimens, 400);
             }
         });
 
@@ -55,7 +55,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent selectWeight = new Intent(RDAActivity.this, SelectWeightActivity.class);
-                startActivityForResult(selectWeight, 100);
+                startActivityForResult(selectWeight, 500);
             }
         });
 
@@ -63,7 +63,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent selectHeight = new Intent(RDAActivity.this, SelectHeightActivity.class);
-                startActivityForResult(selectHeight,100);
+                startActivityForResult(selectHeight,600);
             }
         });
 
@@ -71,7 +71,7 @@ public class RDAActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent goalIntent = new Intent(RDAActivity.this, SelectGoalActivity.class);
-                startActivityForResult(goalIntent, 100);
+                startActivityForResult(goalIntent, 700);
             }
         });
 
@@ -87,21 +87,22 @@ public class RDAActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        String[] userRda = {data.getStringExtra("userAge"), data.getStringExtra("userGender"),
-                            data.getStringExtra("userActivity"), data.getStringExtra("userDimensions"),
-                            data.getStringExtra("userWeight"), data.getStringExtra("userHeight"),
-                            data.getStringExtra("userGoal")};
-
         if(requestCode == 100 && resultCode == RESULT_OK && data != null) {
-            rdaActivityBinding.txtUserAge.setText(userRda[0]);
-//            rdaActivityBinding.txtUserGender.setText(userRda[1]);
-//            rdaActivityBinding.txtUserActivity.setText(userRda[2]);
-//            rdaActivityBinding.txtUserWeightDimensions.setText(userRda[3]);
-//            rdaActivityBinding.txtUserWeight.setText(userRda[4]);
-//            rdaActivityBinding.txtUserHeight.setText(userRda[5]);
-//            rdaActivityBinding.txtGoal.setText(userRda[6]);
+            rdaActivityBinding.txtUserAge.setText(data.getStringExtra("userAge"));
         } else if(requestCode == 200 && resultCode == RESULT_OK && data != null) {
-            rdaActivityBinding.txtUserGender.setText(userRda[1]);
+            rdaActivityBinding.txtUserGender.setText(data.getStringExtra("userGender"));
+        } else if(requestCode == 300 && resultCode == RESULT_OK && data != null) {
+            rdaActivityBinding.txtUserActivity.setText(data.getStringExtra("userActivity"));
+        }
+        else if(requestCode == 400 && resultCode == RESULT_OK && data != null) {
+            rdaActivityBinding.txtUserWeightDimensions.setText(data.getStringExtra("userDimensions"));
+        } else if(requestCode == 500 && resultCode == RESULT_OK && data != null) {
+            rdaActivityBinding.txtUserWeight.setText(data.getStringExtra("userWeight"));
+        } else if(requestCode == 600 && resultCode == RESULT_OK && data != null) {
+            rdaActivityBinding.txtUserHeight.setText(data.getStringExtra("userHeight"));
+        } else if(requestCode == 700 && resultCode == RESULT_OK && data != null) {
+            rdaActivityBinding.txtGoal.setText(data.getStringExtra("userGoal"));
         }
     }
+
 }

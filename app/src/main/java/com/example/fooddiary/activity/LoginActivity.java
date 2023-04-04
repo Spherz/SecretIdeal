@@ -1,4 +1,4 @@
-package com.example.fooddiary;
+package com.example.fooddiary.activity;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.fooddiary.databinding.ActivityLoginBinding;
+import com.example.fooddiary.util.DBManager;
 
 public class LoginActivity extends AppCompatActivity {
 

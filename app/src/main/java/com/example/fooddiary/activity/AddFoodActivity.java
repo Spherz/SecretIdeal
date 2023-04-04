@@ -1,4 +1,4 @@
-package com.example.fooddiary;
+package com.example.fooddiary.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,7 +11,10 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import com.example.fooddiary.adapter.AddFoodAdapter;
 import com.example.fooddiary.databinding.ActivityAddFoodBinding;
+import com.example.fooddiary.model.FoodItem;
+import com.example.fooddiary.model.FoodSubItem;
 
 import java.util.ArrayList;
 import java.util.Calendar;

@@ -1,24 +1,19 @@
-package com.example.fooddiary;
+package com.example.fooddiary.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.fooddiary.R;
 import com.example.fooddiary.databinding.ActivityProfileBinding;
 import com.google.android.material.navigation.NavigationBarView;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 // TODO: Это активити переделать в фрагмент
 
@@ -54,6 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent weightIntent = new Intent(ProfileActivity.this, UserWeightActivity.class);
+                weightIntent.putExtra("loginStr", username);
                 startActivity(weightIntent);
             }
         });

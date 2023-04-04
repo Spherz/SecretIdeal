@@ -1,4 +1,4 @@
-package com.example.fooddiary;
+package com.example.fooddiary.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.fooddiary.R;
 import com.example.fooddiary.databinding.ActivitySelectBinding;
 
 public class SelectActivity extends AppCompatActivity {

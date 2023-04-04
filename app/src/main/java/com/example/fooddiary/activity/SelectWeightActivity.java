@@ -1,4 +1,4 @@
-package com.example.fooddiary;
+package com.example.fooddiary.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,6 +44,13 @@ public class SelectWeightActivity extends AppCompatActivity {
             public void onClick(View v) {
                 getIntent().putExtra("userWeight", String.valueOf(selectWeightBinding.weightPicker.getValue()));
                 setResult(RESULT_OK, getIntent());
+                finish();
+            }
+        });
+
+        selectWeightBinding.imgPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 finish();
             }
         });

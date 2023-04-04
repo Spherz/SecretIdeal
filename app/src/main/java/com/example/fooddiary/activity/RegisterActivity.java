@@ -1,4 +1,4 @@
-package com.example.fooddiary;
+package com.example.fooddiary.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.fooddiary.databinding.ActivityRegisterBinding;
+import com.example.fooddiary.util.DBManager;
 
 public class RegisterActivity extends AppCompatActivity {
 

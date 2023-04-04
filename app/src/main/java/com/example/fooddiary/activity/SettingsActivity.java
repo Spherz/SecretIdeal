@@ -1,6 +1,5 @@
-package com.example.fooddiary;
+package com.example.fooddiary.activity;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
