@@ -73,6 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
                         return true;
                     case R.id.item2:
                         Intent diaryIntent = new Intent(ProfileActivity.this, DiaryActivity.class);
+                        diaryIntent.putExtra("username", username);
                         startActivityForResult(diaryIntent, 200);
                         return true;
                     case R.id.item3:

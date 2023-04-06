@@ -26,15 +26,23 @@ public class UserWeightActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String username = intent.getStringExtra("loginStr");
 
-//        dbManager = new DBManager(this);
-//        dbManager.open();
+        dbManager = new DBManager(this);
+        dbManager.open();
+
+//        System.out.println(dbManager.findByWeight(username));
+//        System.out.println(username);
+
+        if(dbManager.findByWeight(username) != null) {
+            userWeightBinding.txtWeight.setText(dbManager.findByWeight(username));
+        }
 
         userWeightBinding.imgAddUserWeight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent addUserWeightIntent = new Intent(UserWeightActivity.this, AddUserWeightActivity.class);
                 addUserWeightIntent.putExtra("username", username);
-                startActivityForResult(intent, 100);
+                addUserWeightIntent.putExtra("weight", userWeightBinding.txtWeight.getText().toString());
+                startActivityForResult(addUserWeightIntent, 100);
             }
         });
 

@@ -35,6 +35,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent rdaIntent = new Intent(SettingsActivity.this, RDAActivity.class);
+                rdaIntent.putExtra("username", username);
                 startActivity(rdaIntent);
             }
         });

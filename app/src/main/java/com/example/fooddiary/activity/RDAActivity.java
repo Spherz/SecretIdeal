@@ -6,18 +6,42 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.fooddiary.databinding.ActivityRdaactivityBinding;
+import com.example.fooddiary.util.DBManager;
 
 public class RDAActivity extends AppCompatActivity {
 
     private ActivityRdaactivityBinding rdaActivityBinding;
+
+    DBManager dbManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         rdaActivityBinding = ActivityRdaactivityBinding.inflate(getLayoutInflater());
         setContentView(rdaActivityBinding.getRoot());
+
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+
+        dbManager = new DBManager(this);
+        dbManager.open();
+
+        if(dbManager.findUserActivityByUsername(username) != null && dbManager.findAgeByUsername(username) != null &&
+            dbManager.findGenderByUsername(username) != null && dbManager.findByWeight(username) != null &&
+            dbManager.findHeightByUsername(username) != null && dbManager.findGoalByUsername(username) != null) {
+            rdaActivityBinding.txtUserActivity.setText(dbManager.findUserActivityByUsername(username));
+            rdaActivityBinding.txtUserAge.setText(dbManager.findAgeByUsername(username));
+            rdaActivityBinding.txtUserGender.setText(dbManager.findGenderByUsername(username));
+            rdaActivityBinding.txtUserWeight.setText(dbManager.findByWeight(username));
+            rdaActivityBinding.txtUserHeight.setText(dbManager.findHeightByUsername(username));
+            rdaActivityBinding.txtGoal.setText(dbManager.findGoalByUsername(username));
+        }
+
+        System.out.println(dbManager.findUserActivityByUsername(username));
+        System.out.println(username);
 
         rdaActivityBinding.btnSelectAge.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +102,18 @@ public class RDAActivity extends AppCompatActivity {
         rdaActivityBinding.imgPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
+            }
+        });
+
+        rdaActivityBinding.btnCalculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbManager.updateUserRda(username, rdaActivityBinding.txtUserAge.getText().toString(),
+                        rdaActivityBinding.txtUserGender.getText().toString(),rdaActivityBinding.txtUserActivity.getText().toString(),
+                        rdaActivityBinding.txtUserWeight.getText().toString(), rdaActivityBinding.txtUserWeight.getText().toString(),
+                        rdaActivityBinding.txtGoal.getText().toString());
+                Toast.makeText(RDAActivity.this, "Данные успешно обновлены", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

@@ -40,7 +40,7 @@ public class AddUserWeightActivity extends AppCompatActivity {
         dbManager = new DBManager(this);
         dbManager.open();
 
-        dbManager.updateUserWeight(username, String.valueOf(editedWeight));
+        addUserWeightBinding.txtEditedWeight.setText(intent.getStringExtra("weight"));
 
         addUserWeightBinding.imgCancelWeight.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +80,7 @@ public class AddUserWeightActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getIntent().putExtra("editedWeight", String.valueOf(String.format("%.1f", editedWeight)));
+                dbManager.updateUserWeight(username, String.valueOf(editedWeight));
                 setResult(RESULT_OK, getIntent());
                 finish();
             }

@@ -32,6 +32,11 @@ public class DiaryActivity extends AppCompatActivity {
 
         diaryBinding.bottomNavigationView.setSelectedItemId(R.id.item2);
 
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+
+        setInitialDateTime();
+
         diaryBinding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -41,6 +46,11 @@ public class DiaryActivity extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.item2:
+                        return true;
+                    case R.id.item3:
+                        Intent settingsIntent = new Intent(DiaryActivity.this, SettingsActivity.class);
+                        settingsIntent.putExtra("username", username);
+                        startActivity(settingsIntent);
                         return true;
                 }
                 return false;
@@ -81,8 +91,7 @@ public class DiaryActivity extends AppCompatActivity {
     private void setInitialDateTime() {
         diaryBinding.curDateTime.setText(DateUtils.formatDateTime(this,
                 dateAndTime.getTimeInMillis(),
-                DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR
-                        | DateUtils.FORMAT_SHOW_TIME));
+                DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR));
     }
 
     TimePickerDialog.OnTimeSetListener t = new TimePickerDialog.OnTimeSetListener() {

@@ -1,5 +1,6 @@
 package com.example.fooddiary.activity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,10 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.fooddiary.databinding.ActivityManageAccountsBinding;
+import com.example.fooddiary.util.DBManager;
 
 public class ManageAccountsActivity extends AppCompatActivity {
 
     private ActivityManageAccountsBinding manageAccountsBinding;
+
+    DBManager dbManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +25,8 @@ public class ManageAccountsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
 
-        System.out.println(username);
+        dbManager = new DBManager(this);
+        dbManager.open();
         manageAccountsBinding.imgPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,9 +39,11 @@ public class ManageAccountsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent changeUsernameIntent = new Intent(ManageAccountsActivity.this, ChangeUsernmaeActivity.class);
                 changeUsernameIntent.putExtra("username", username);
-                startActivity(changeUsernameIntent);
+                startActivityForResult(changeUsernameIntent, 100);
             }
         });
+
+        manageAccountsBinding.txtUserEmail.setText(dbManager.findEmailByUser(username));
 
         manageAccountsBinding.btnDeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,5 +54,13 @@ public class ManageAccountsActivity extends AppCompatActivity {
         });
 
         manageAccountsBinding.txtManageUsername.setText(username);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 100 && resultCode == RESULT_OK && data != null) {
+            manageAccountsBinding.txtManageUsername.setText(data.getStringExtra("username"));
+        }
     }
 }

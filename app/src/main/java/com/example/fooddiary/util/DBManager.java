@@ -87,39 +87,89 @@ public class DBManager {
         return user;
     }
 
-    public void updateUserRda(String username, String age, String gender, String activity, String weight,
-                              String height, String goal) {
+    public String findEmailByUser(String username) {
         database = dbHelper.getWritableDatabase();
-        Cursor cursor = database.rawQuery("update USERS set age = ?, gender = ?, activity = ?, weight = ?, height = ?, goal = ? where fullname = ?", new String[] {age, gender, activity, weight, height, goal, username});
+        Cursor cursor = database.rawQuery("select email from USERS where fullname = ?", new String[] {username});
+        String email = "User email not found";
+        if(cursor.moveToFirst()) email = cursor.getString(0);
         cursor.close();
         database.close();
+        return email;
+    }
+
+    public boolean updateUserRda(String username, String age, String gender, String activity, String weight,
+                              String height, String goal) {
+        database = dbHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.AGE, age);
+        contentValues.put(DatabaseHelper.GENDER, gender);
+        contentValues.put(DatabaseHelper.ACTIVITY, activity);
+        contentValues.put(DatabaseHelper.WEIGHT, weight);
+        contentValues.put(DatabaseHelper.HEIGHT, height);
+        contentValues.put(DatabaseHelper.GOAL, goal);
+        long ins = database.update(DatabaseHelper.TABLE_NAME, contentValues, "fullname = ?", new String[] {username});
+        return ins != -1;
+    }
+
+
+    public String findHeightByUsername(String username) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select height from USERS where fullname = ?", new String[] {username});
+        cursor.moveToFirst();
+        return cursor.getString(0);
+    }
+
+    public String findAgeByUsername(String username) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select age from USERS where fullname = ?", new String[] {username});
+        cursor.moveToFirst();
+        return cursor.getString(0);
+    }
+
+    public String findUserActivityByUsername(String username) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select activity from USERS where fullname = ?", new String[] {username});
+        cursor.moveToFirst();
+        return cursor.getString(0);
+    }
+
+    public String findGoalByUsername(String username) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select goal from USERS where fullname = ?", new String[] {username});
+        cursor.moveToFirst();
+        return cursor.getString(0);
+    }
+
+    public String findGenderByUsername(String username) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select gender from USERS where fullname = ?", new String[] {username});
+        cursor.moveToFirst();
+        return cursor.getString(0);
     }
 
     public String findByWeight(String username) {
         database = dbHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("select weight from USERS where fullname = ?", new String[] {username});
-        String weight = "User weight not found";
-        if (cursor.moveToFirst()) weight = cursor.getString(0);
-        cursor.close();
-        database.close();
-        return weight;
+        cursor.moveToFirst();
+        return cursor.getString(0);
     }
-    // TODO: Добавить метод для изменения имени пользователя
-    public void updateUsername(String oldUsername, String username) {
+    public boolean updateUsername(String oldUsername, String username) {
         database = dbHelper.getWritableDatabase();
-        Cursor cursor = database.rawQuery("update USERS set username = ? where username = ?", new String[] {oldUsername, username});
-        cursor.close();
-        database.close();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.FULLNAME, oldUsername);
+        long ins = database.update(DatabaseHelper.TABLE_NAME, contentValues, "fullname = ?", new String[] {username});
+        return ins != -1;
     }
 
     public void deleteUser(String username) {
-        database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper.FULLNAME + "=" + username, null);
+        database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper.FULLNAME + " = " + username, null);
     }
 
-    public void updateUserWeight(String username, String weight) {
+    public boolean updateUserWeight(String username, String weight) {
         database = dbHelper.getWritableDatabase();
-        Cursor cursor = database.rawQuery("update USERS set weight = ? WHERE username = ?", new String[] {weight, username});
-        cursor.close();
-        database.close();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.WEIGHT, weight);
+        long ins = database.update(DatabaseHelper.TABLE_NAME, contentValues, "fullname = ?", new String[] {username});
+        return ins != -1;
     }
 }
