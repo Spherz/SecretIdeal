@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.fooddiary.R;
 import com.example.fooddiary.databinding.ActivityProfileBinding;
+import com.example.fooddiary.util.DBManager;
 import com.google.android.material.navigation.NavigationBarView;
 
 // TODO: Это активити переделать в фрагмент
@@ -22,6 +23,8 @@ public class ProfileActivity extends AppCompatActivity {
     private ActivityProfileBinding profileBinding;
 
     private final int GALLERY_REQ_CODE = 1000;
+
+    DBManager dbManager;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -53,6 +56,8 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(weightIntent);
             }
         });
+
+        insertFoodData();
 
         profileBinding.userImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +92,12 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void insertFoodData() {
+        dbManager = new DBManager(this);
+        dbManager.open();
+        dbManager.insertFood("test", "1234", "567", "789", "566");
     }
 
 }

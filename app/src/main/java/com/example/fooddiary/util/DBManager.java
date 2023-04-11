@@ -36,6 +36,16 @@ public class DBManager {
         database.insert(DatabaseHelper.TABLE_NAME, null, contentValue);
     }
 
+    public void insertFood(String food_name, String food_calories, String food_fats, String food_carbohydrates, String food_protein) {
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper.FOOD_NAME, food_name);
+        contentValue.put(DatabaseHelper.FOOD_CALORIES, food_calories);
+        contentValue.put(DatabaseHelper.FOOD_FATS, food_fats);
+        contentValue.put(DatabaseHelper.FOOD_CARBOHYDRATES, food_carbohydrates);
+        contentValue.put(DatabaseHelper.FOOD_PROTEIN, food_protein);
+        database.insert(DatabaseHelper.FOOD_TABLE, null, contentValue);
+    }
+
     public Cursor fetch() {
         String[] columns = new String[] {DatabaseHelper._ID, DatabaseHelper.EMAIL, DatabaseHelper.FULLNAME, DatabaseHelper.PASSWORD, DatabaseHelper.PHONE};
         Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, columns, null, null, null, null, null);

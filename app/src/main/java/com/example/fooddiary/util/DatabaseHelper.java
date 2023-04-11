@@ -30,7 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     static final String DB_NAME = "SECRET_IDEAL.DB";
 
-    static final int DB_VERSION = 2;
+    static final int DB_VERSION = 3;
 
     public static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + _ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EMAIL + " TEXT, " + FULLNAME + " TEXT NOT NULL, "
