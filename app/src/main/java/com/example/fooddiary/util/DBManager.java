@@ -55,6 +55,12 @@ public class DBManager {
         return cursor;
     }
 
+    public Cursor getFoodData() {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select * from FOOD", null);
+        return cursor;
+    }
+
     public int update(long _id, String email, String fullname, String password, String phone) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.EMAIL, email);
