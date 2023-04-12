@@ -90,14 +90,38 @@ public class ProfileActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
     }
 
     public void insertFoodData() {
         dbManager = new DBManager(this);
         dbManager.open();
         dbManager.insertFood("test", "1234", "567", "789", "566");
+        dbManager.insertFood("Белый Рис", "129", "0,28г", "27,9г", "2,66г");
+        dbManager.insertFood("Лапша", "219", "3,3г", "40,02г", "7,22г");
+        dbManager.insertFood("Спагетти", "157", "0,92г", "30,68г", "5,76г");
+        dbManager.insertFood("Макароны или Лапша с Сыром", "493", "22,84г", "52,15г", "19,29г");
+
+        dbManager.insertFood("Жареная Баранина", "266", "18,15г", "0г", "23,93г");
+        dbManager.insertFood("Бекон", "541", "41,78г", "1,43г", "37,04г");
+        dbManager.insertFood("Бекон (Жареный)", "533", "40,3г", "1,5г", "38,34г");
+        dbManager.insertFood("Говяжий Фарш", "276", "18,58г", "0г", "25,35г");
+        dbManager.insertFood("Говядина", "288", "19,54г", "0г", "26,33г");
+        dbManager.insertFood("Жареная Курица", "147", "8,36г", "0г", "16,79г");
+
+        dbManager.insertFood("Ванильный Йогурт (Обезжиренный)", "85", "1,25г", "13,8г", "4,93г");
+        dbManager.insertFood("Молоко", "122", "4,88г", "11,49г", "8,03г");
+        dbManager.insertFood("Молоко (с Низким Содержанием Жира)", "102", "2,37г", "12,18г", "8,22г");
+        dbManager.insertFood("Творог с Фруктами", "97", "3,85г", "4,61г", "10,69г");
+
+        dbManager.insertFood("Вода", "0", "0г", "0г", "0г");
+        dbManager.insertFood("Кофе Латте", "135", "5,51г", "12,36г", "8,81г");
+        dbManager.insertFood("Кофе Эспрессо", "1", "0,11г", "0г", "0,07г");
+        dbManager.insertFood("Растворимый Кофе (из Порошка)", "5", "0г", "0,9г", "0,26г");
+        dbManager.insertFood("Чай", "2", "0г", "0,71г", "0г");
+        dbManager.insertFood("Чай Несладкий", "2", "0г", "0,76г", "0,02г");
+        dbManager.insertFood("Травяной Чай", "2", "0г", "0,47г", "0г");
+        dbManager.insertFood("Зеленый Чай", "2", "0г", "0,47г", "0г");
+        dbManager.insertFood("Чай с Сахаром", "47", "0г", "12,51г", "0,02г");
     }
 
 }
