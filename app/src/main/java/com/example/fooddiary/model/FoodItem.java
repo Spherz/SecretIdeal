@@ -1,41 +1,56 @@
 package com.example.fooddiary.model;
 
-import java.util.List;
-
 public class FoodItem {
-    private int portion;
-    private double rda;
-    private double calories;
-    private List<FoodSubItem> nestedList;
+    private String foodName;
+    private String portion;
+    private String rda;
+    private String calories;
+    private String foodFats;
+    private String carbohydrates;
+    private String protein;
     private boolean isExpandable;
 
-    public FoodItem(int portion, double rda, double calories) {
+    public FoodItem(String foodName, String portion, String rda, String calories, String foodFats, String carbohydrates, String protein) {
+        this.foodName = foodName;
         this.portion = portion;
         this.rda = rda;
         this.calories = calories;
+        this.foodFats = foodFats;
+        this.carbohydrates = carbohydrates;
+        this.protein = protein;
+        this.isExpandable = false;
     }
 
-    public FoodItem(int portion, double rda, double calories, List<FoodSubItem> nestedList) {
-        this.portion = portion;
-        this.rda = rda;
-        this.calories = calories;
-        this.nestedList = nestedList;
+    public String getFoodFats() {
+        return foodFats;
     }
 
-    public FoodItem(int portion, double rda, double calories, List<FoodSubItem> nestedList, boolean isExpandable) {
-        this.portion = portion;
-        this.rda = rda;
-        this.calories = calories;
-        this.nestedList = nestedList;
-        this.isExpandable = isExpandable;
+    public void setFoodFats(String foodFats) {
+        this.foodFats = foodFats;
     }
 
-    public List<FoodSubItem> getNestedList() {
-        return nestedList;
+    public String getCarbohydrates() {
+        return carbohydrates;
     }
 
-    public void setNestedList(List<FoodSubItem> nestedList) {
-        this.nestedList = nestedList;
+    public void setCarbohydrates(String carbohydrates) {
+        this.carbohydrates = carbohydrates;
+    }
+
+    public String getProtein() {
+        return protein;
+    }
+
+    public void setProtein(String protein) {
+        this.protein = protein;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
     }
 
     public boolean isExpandable() {
@@ -46,27 +61,27 @@ public class FoodItem {
         isExpandable = expandable;
     }
 
-    public int getPortion() {
+    public String getPortion() {
         return portion;
     }
 
-    public void setPortion(int portion) {
+    public void setPortion(String portion) {
         this.portion = portion;
     }
 
-    public double getRda() {
+    public String getRda() {
         return rda;
     }
 
-    public void setRda(double rda) {
+    public void setRda(String rda) {
         this.rda = rda;
     }
 
-    public double getCalories() {
+    public String getCalories() {
         return calories;
     }
 
-    public void setCalories(double calories) {
+    public void setCalories(String calories) {
         this.calories = calories;
     }
 

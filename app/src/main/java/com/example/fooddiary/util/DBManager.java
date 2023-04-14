@@ -36,13 +36,15 @@ public class DBManager {
         database.insert(DatabaseHelper.TABLE_NAME, null, contentValue);
     }
 
-    public void insertFood(String food_name, String food_calories, String food_fats, String food_carbohydrates, String food_protein) {
+    public void insertFood(String food_name, String food_calories, String food_fats, String food_carbohydrates, String food_protein, String food_portion, String food_rda) {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.FOOD_NAME, food_name);
         contentValue.put(DatabaseHelper.FOOD_CALORIES, food_calories);
         contentValue.put(DatabaseHelper.FOOD_FATS, food_fats);
         contentValue.put(DatabaseHelper.FOOD_CARBOHYDRATES, food_carbohydrates);
         contentValue.put(DatabaseHelper.FOOD_PROTEIN, food_protein);
+        contentValue.put(DatabaseHelper.FOOD_PORTION, food_portion);
+        contentValue.put(DatabaseHelper.FOOD_RDA, food_rda);
         database.insert(DatabaseHelper.FOOD_TABLE, null, contentValue);
     }
 
