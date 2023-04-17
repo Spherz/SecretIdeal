@@ -39,11 +39,9 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
     public void onBindViewHolder(@NonNull DiaryAdapter.DiaryHolder holder, int position) {
         Intent intent = new Intent();
         ButtonItem buttonItem = buttonsList.get(position);
-
         holder.title.setText(buttonsList.get(position).getTitle());
         holder.imageLeft.setImageResource(buttonsList.get(position).getImageLeft());
         holder.imageRight.setImageResource(buttonsList.get(position).getImageRight());
-
         boolean isExpandable = buttonsList.get(position).isExpandable();
         holder.expandableItem.setVisibility(isExpandable ? View.VISIBLE : View.GONE);
     }

@@ -19,6 +19,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String GOAL = "goal";
     public static final String PHONE = "phone";
 
+    public static final String WEIGHT_DATE = "weight_date";
+
+    public static final String WEIGHT_YEAR = "weight_year";
+
     public static final String FOOD_TABLE = "FOOD";
 
     public static final String FOOD_ID = "id";
@@ -32,12 +36,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     static final String DB_NAME = "SECRET_IDEAL.DB";
 
-    static final int DB_VERSION = 4;
+    static final int DB_VERSION = 6;
 
     public static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + _ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EMAIL + " TEXT, " + FULLNAME + " TEXT NOT NULL, "
             + PHONE + " TEXT, " + PASSWORD + " TEXT NOT NULL, " + AGE + " TEXT, " + GENDER + " TEXT, "
-            + ACTIVITY + " TEXT, " + WEIGHT + " TEXT, " + HEIGHT + " TEXT, " + GOAL + " TEXT);";
+            + ACTIVITY + " TEXT, " + WEIGHT + " TEXT, " + HEIGHT + " TEXT, " + WEIGHT_DATE + " TEXT, " + WEIGHT_YEAR + " TEXT, " + GOAL + " TEXT);";
 
     public static final String CREATE_FOOD_TABLE = "create table " + FOOD_TABLE + "(" + FOOD_ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, " + FOOD_NAME + " TEXT, " + FOOD_CALORIES + " TEXT, "

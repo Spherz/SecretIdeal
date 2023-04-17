@@ -113,6 +113,7 @@
             android:ems="10"
             android:hint="Поиск Еды"
             android:inputType="textPersonName"
+            android:textColorHint="@color/dark_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -7,6 +7,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -14,7 +15,14 @@ import android.widget.TimePicker;
 import com.example.fooddiary.databinding.ActivityAddUserWeightBinding;
 import com.example.fooddiary.util.DBManager;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class AddUserWeightActivity extends AppCompatActivity {
 
@@ -79,8 +87,13 @@ public class AddUserWeightActivity extends AppCompatActivity {
         addUserWeightBinding.imgSubmitWeight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getIntent().putExtra("editedWeight", String.valueOf(String.format("%.1f", editedWeight)));
-                dbManager.updateUserWeight(username, String.valueOf(editedWeight));
+                Date currentDate = new Date();
+                DateFormat dateFormat = new SimpleDateFormat("dd MMM", Locale.getDefault());
+                String dateText = dateFormat.format(currentDate);
+                DateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
+                String yearText = yearFormat.format(currentDate);
+                getIntent().putExtra("editedWeight", String.format("%.1f", editedWeight));
+                dbManager.updateUserWeight(username, String.valueOf(editedWeight), dateText, yearText);
                 setResult(RESULT_OK, getIntent());
                 finish();
             }

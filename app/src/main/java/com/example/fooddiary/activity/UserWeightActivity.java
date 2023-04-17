@@ -5,14 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.fooddiary.R;
 import com.example.fooddiary.adapter.DiaryAdapter;
 import com.example.fooddiary.adapter.UserWeightAdapter;
 import com.example.fooddiary.databinding.ActivityUserWeightBinding;
 import com.example.fooddiary.model.ButtonItem;
+import com.example.fooddiary.model.FoodItem;
 import com.example.fooddiary.util.DBManager;
 
 import java.util.ArrayList;
@@ -38,13 +42,13 @@ public class UserWeightActivity extends AppCompatActivity {
         userWeightBinding = ActivityUserWeightBinding.inflate(getLayoutInflater());
         setContentView(userWeightBinding.getRoot());
 
-        initRecyclerView();
-
         Intent intent = getIntent();
         String username = intent.getStringExtra("loginStr");
 
         dbManager = new DBManager(this);
         dbManager.open();
+
+        initRecyclerView(username);
 
 //        System.out.println(dbManager.findByWeight(username));
 //        System.out.println(username);
@@ -71,65 +75,26 @@ public class UserWeightActivity extends AppCompatActivity {
         });
     }
 
-    public void initRecyclerView() {
+    private void displayWeight(String username) {
+        Log.e("Username =======>", username);
+        Cursor cursor = dbManager.findYearByUsername(username);
+        if (cursor.getCount() == 0) {
+            Toast.makeText(this, "No Entry Exists", Toast.LENGTH_SHORT).show();
+            return;
+        } else {
+            while (cursor.moveToNext()) {
+                year.add(cursor.getString(0));
+                date.add(cursor.getString(1));
+                weight.add(cursor.getString(2));
+            }
+        }
+    }
+
+    public void initRecyclerView(String username) {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
-
         // TODO Переделать при добавлении веса
-
-        year.add("2020");
-        year.add("2020");
-        year.add("2020");
-        year.add("2020");
-        year.add("2021");
-        year.add("2021");
-        year.add("2021");
-        year.add("2021");
-        year.add("2022");
-        year.add("2022");
-        year.add("2022");
-        year.add("2022");
-        year.add("2023");
-        year.add("2023");
-        year.add("2023");
-        year.add("2019");
-        year.add("2019");
-        year.add("2019");
-        year.add("2019");
-        year.add("2018");
-        year.add("2017");
-        year.add("2017");
-        year.add("2017");
-        year.add("2016");
-        year.add("2016");
-        year.add("2016");
-        year.add("2016");
-        year.add("2015");
-        year.add("2015");
-        year.add("2015");
-        year.add("2014");
-
-        date.add("15 August");
-        date.add("1 July");
-        date.add("5 September");
-        date.add("30 March");
-        date.add("2 January");
-        date.add("27 October");
-        date.add("13 March");
-        date.add("20 February");
-        date.add("7 April");
-        date.add("8 April");
-
-        weight.add("50.2");
-        weight.add("50.3");
-        weight.add("50.7");
-        weight.add("50.8");
-        weight.add("53.4");
-        weight.add("57.2");
-        weight.add("59.2");
-        weight.add("60.2");
-        weight.add("61.2");
-        weight.add("63.2");
+        displayWeight(username);
 
         for (String yeas : year) {
             if (years.contains(yeas)) {
@@ -138,8 +103,6 @@ public class UserWeightActivity extends AppCompatActivity {
                 years.add(yeas);
             }
         }
-
-        System.out.println(String.valueOf(years));
 
         adapter = new UserWeightAdapter(this, years, date, weight);
 

@@ -48,6 +48,13 @@ public class DBManager {
         database.insert(DatabaseHelper.FOOD_TABLE, null, contentValue);
     }
 
+    public void insertWeightDate(String weightDate, String weightYear) {
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper.WEIGHT_DATE, weightDate);
+        contentValue.put(DatabaseHelper.WEIGHT_YEAR, weightYear);
+        database.insert(DatabaseHelper.TABLE_NAME, null, contentValue);
+    }
+
     public Cursor fetch() {
         String[] columns = new String[] {DatabaseHelper._ID, DatabaseHelper.EMAIL, DatabaseHelper.FULLNAME, DatabaseHelper.PASSWORD, DatabaseHelper.PHONE};
         Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, columns, null, null, null, null, null);
@@ -171,6 +178,25 @@ public class DBManager {
         cursor.moveToFirst();
         return cursor.getString(0);
     }
+
+    public Cursor getWeightByUsername(String username) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select weight from USERS where fullname = ?", new String[] {username});
+        return cursor;
+    }
+
+    public Cursor findYearByUsername(String username) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select weight_year, weight_date, weight from USERS where fullname = ?", new String[] {username});
+        return cursor;
+    }
+
+    public Cursor findDateByUsername(String username) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select weight_date from USERS where fullname = ?", new String[] {username});
+        return cursor;
+    }
+
     public boolean updateUsername(String oldUsername, String username) {
         database = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -183,10 +209,13 @@ public class DBManager {
         database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper.FULLNAME + " = " + username, null);
     }
 
-    public boolean updateUserWeight(String username, String weight) {
+    public boolean updateUserWeight(String username, String weight, String weightDate, String weightYear) {
         database = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.WEIGHT, weight);
+        contentValues.put(DatabaseHelper.WEIGHT_DATE, weightDate);
+        contentValues.put(DatabaseHelper.WEIGHT_YEAR, weightYear);
+//        contentValues.put(DatabaseHelper.WEIGHT_DATE, weight_date);
         long ins = database.update(DatabaseHelper.TABLE_NAME, contentValues, "fullname = ?", new String[] {username});
         return ins != -1;
     }

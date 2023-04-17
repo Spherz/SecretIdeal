@@ -79,10 +79,6 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodH
                     selectedFoodList.add(foodList.get(holder.getAdapterPosition()));
                     holder.selectFood.setChecked(true);
                     intent.putExtra("foodName", selectedFoodList.get(holder.getAdapterPosition()).getFoodName());
-                    intent.putExtra("foodCalories", selectedFoodList.get(holder.getAdapterPosition()).getCalories());
-                    intent.putExtra("foodFats", selectedFoodList.get(holder.getAdapterPosition()).getFoodFats());
-                    intent.putExtra("foodProtein", selectedFoodList.get(holder.getAdapterPosition()).getProtein());
-                    intent.putExtra("foodCarbohydrates", selectedFoodList.get(holder.getAdapterPosition()).getCarbohydrates());
                     onItemChecked.onItemChecked(intent);
                 } else {
                     holder.selectFood.setChecked(false);
