@@ -1,35 +1,46 @@
 package com.example.fooddiary.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fooddiary.R;
+import com.example.fooddiary.activity.DiaryActivity;
 import com.example.fooddiary.interfaces.FoodListener;
 import com.example.fooddiary.model.FoodItem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodHolder> {
     private Context context;
     private ArrayList<FoodItem> foodList;
 
-    private FoodListener foodListener;
+    private OnItemChecked onItemChecked;
 
     private ArrayList<FoodItem> selectedFoodList = new ArrayList<>();
 
-    public AddFoodAdapter(Context context, ArrayList<FoodItem> foodItems, FoodListener foodListener) {
+    public AddFoodAdapter(Context context, ArrayList<FoodItem> foodItems) {
         this.context = context;
         this.foodList = foodItems;
-        this.foodListener = foodListener;
+
+        try {
+            this.onItemChecked = ((OnItemChecked) context);
+        } catch (ClassCastException e) {
+            throw new ClassCastException(e.getMessage());
+        }
     }
 
     @NonNull
@@ -41,7 +52,7 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodH
 
     @Override
     public void onBindViewHolder(@NonNull AddFoodHolder holder, int position) {
-        final FoodItem foodItem = foodList.get(position);
+        FoodItem foodItem = foodList.get(position);
 
         holder.foodName.setText(String.valueOf(foodList.get(position).getFoodName()));
         holder.portion.setText(String.valueOf(foodList.get(position).getPortion()));
@@ -54,44 +65,49 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodH
         boolean isExpandable = foodList.get(position).isExpandable();
         holder.expandableLayout.setVisibility(isExpandable ? View.VISIBLE : View.GONE);
 
-        if(isExpandable) {
-            holder.selectFood.setChecked(true);
-        } else {
-            holder.selectFood.setChecked(false);
-        }
-
-        holder.selectFood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (foodList != null && foodList.size() > 0) {
-                    if(holder.selectFood.isChecked()) {
-                        selectedFoodList.add(foodList.get(position));
-                    } else {
-                        selectedFoodList.remove(foodList.get(position));
-                    }
-                    foodListener.onFoodChange(selectedFoodList);
-                }
-            }
-        });
-
-//        System.out.println(isExpandable);
-//        holder.expandableLayout.setVisibility(isExpandable ? View.VISIBLE : View.GONE);
-//
 //        if(isExpandable) {
 //            holder.selectFood.setChecked(true);
 //        } else {
 //            holder.selectFood.setChecked(false);
 //        }
-//
-//        holder.selectFood.setOnClickListener(new View.OnClickListener() {
+
+        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                if (!holder.selectFood.isChecked()) {
+                    selectedFoodList.add(foodList.get(holder.getAdapterPosition()));
+                    holder.selectFood.setChecked(true);
+                    intent.putExtra("foodName", selectedFoodList.get(holder.getAdapterPosition()).getFoodName());
+                    intent.putExtra("foodCalories", selectedFoodList.get(holder.getAdapterPosition()).getCalories());
+                    intent.putExtra("foodFats", selectedFoodList.get(holder.getAdapterPosition()).getFoodFats());
+                    intent.putExtra("foodProtein", selectedFoodList.get(holder.getAdapterPosition()).getProtein());
+                    intent.putExtra("foodCarbohydrates", selectedFoodList.get(holder.getAdapterPosition()).getCarbohydrates());
+                    onItemChecked.onItemChecked(intent);
+                } else {
+                    holder.selectFood.setChecked(false);
+                    selectedFoodList.remove(foodList.get(holder.getAdapterPosition()));
+                }
+            }
+        });
+
+//        holder.selectFood.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
-//            public void onClick(View v) {
-//                foodItem.setExpandable(!foodItem.isExpandable());
-//                System.out.println("Clicked");
-//                foodSubItems = foodItem.getNestedItem();
-//                notifyItemChanged(holder.getAdapterPosition());
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked){
+//                    selectedFoodList.add(foodList.get(holder.getAdapterPosition()));
+//                } else {
+//                    selectedFoodList.remove(foodList.get(holder.getAdapterPosition()));
+//                }
+//                System.out.println(selectedFoodList.toString());
+////                Intent intent = new Intent();
+////
+////                intent.putExtra("foodName", foodList.get(holder.getAdapterPosition()).getFoodName());
+////                onItemChecked.onItemChecked(intent);
 //            }
 //        });
+
+        holder.selectFood.setChecked(foodItem.getSelected());
     }
 
     @Override
@@ -106,7 +122,7 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodH
 
     public class AddFoodHolder extends RecyclerView.ViewHolder {
         private TextView foodName, portion, rda, calories, foodFats, foodCarbohydrates, foodProtein;
-        private ConstraintLayout constraintLayout;
+        private ConstraintLayout mainLayout;
         private CheckBox selectFood;
         private RelativeLayout expandableLayout;
 
@@ -119,7 +135,7 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodH
             foodFats = itemView.findViewById(R.id.txtSelectDietaryFats);
             foodCarbohydrates = itemView.findViewById(R.id.txtSelectCarbohydrates);
             foodProtein = itemView.findViewById(R.id.txtSelectProtein);
-            constraintLayout = itemView.findViewById(R.id.mainInfoLayout);
+            mainLayout = itemView.findViewById(R.id.mainInfoLayout);
             expandableLayout = itemView.findViewById(R.id.expandable_layout);
             selectFood = itemView.findViewById(R.id.cbSelectFood);
 
@@ -134,4 +150,7 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodH
         }
     }
 
+    public interface OnItemChecked {
+        public void onItemChecked(Intent intent);
+    }
 }

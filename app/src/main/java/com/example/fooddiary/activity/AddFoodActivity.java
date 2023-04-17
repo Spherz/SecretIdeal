@@ -5,11 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -24,12 +26,12 @@ import com.example.fooddiary.util.DBManager;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class AddFoodActivity extends AppCompatActivity implements FoodListener{
+public class AddFoodActivity extends AppCompatActivity implements AddFoodAdapter.OnItemChecked {
 
     private ActivityAddFoodBinding addFoodBinding;
     ArrayList<FoodItem> foodItems = new ArrayList<FoodItem>();
 
-    FoodListener foodListener;
+    ArrayList<String> selectedItems = new ArrayList<>();
 
     private DBManager dbManager;
     AddFoodAdapter adapter;
@@ -52,7 +54,9 @@ public class AddFoodActivity extends AppCompatActivity implements FoodListener{
         addFoodBinding.txtSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                getIntent().putExtra("foodName", selectedItems);
+                setResult(RESULT_OK, getIntent());
+                finish();
             }
         });
 
@@ -79,7 +83,6 @@ public class AddFoodActivity extends AppCompatActivity implements FoodListener{
                 filter(s.toString());
             }
         });
-
     }
 
     private void filter(String text) {
@@ -109,7 +112,7 @@ public class AddFoodActivity extends AppCompatActivity implements FoodListener{
     private void init() {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
-        adapter = new AddFoodAdapter(this, foodItems, this);
+        adapter = new AddFoodAdapter(this, foodItems);
 
         addFoodBinding.rcList.setHasFixedSize(true);
 
@@ -141,8 +144,10 @@ public class AddFoodActivity extends AppCompatActivity implements FoodListener{
     };
 
     @Override
-    public void onFoodChange(ArrayList<FoodItem> changedList) {
-        Toast.makeText(this, foodItems.toString(), Toast.LENGTH_SHORT).show();
-        System.out.println(foodItems.toString());
+    public void onItemChecked(Intent intent) {
+        Log.e("Data=========>", intent.getStringExtra("foodName"));
+        selectedItems.add(intent.getStringExtra("foodName"));
+        addFoodBinding.txtSubmit.setVisibility(View.VISIBLE);
+        addFoodBinding.txtCancel.setVisibility(View.GONE);
     }
 }

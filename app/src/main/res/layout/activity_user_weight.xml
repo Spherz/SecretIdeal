@@ -7,6 +7,7 @@
     tools:context=".activity.UserWeightActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#269b26"
@@ -49,6 +50,7 @@
             android:id="@+id/txtWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="50.0"
             android:textAlignment="center"
             android:textColor="@color/splash_text_white"
             android:textSize="34sp" />
@@ -110,6 +112,15 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcWeightByDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
 
     <!--    TODO: Добавить RecyclerView-->
 </androidx.constraintlayout.widget.ConstraintLayout>

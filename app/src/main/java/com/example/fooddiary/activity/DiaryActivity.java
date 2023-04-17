@@ -1,6 +1,7 @@
 package com.example.fooddiary.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -75,7 +76,7 @@ public class DiaryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent searchIntent = new Intent(DiaryActivity.this, AddFoodActivity.class);
-                startActivity(searchIntent);
+                startActivityForResult(searchIntent, 100);
             }
         });
     }
@@ -86,6 +87,8 @@ public class DiaryActivity extends AppCompatActivity {
         adapter = new DiaryAdapter(this, buttonItems);
 
         diaryBinding.rcBtnList.setHasFixedSize(true);
+
+        // TODO Посмотреть как в RC передать данные с активити (ПОМЕНЯТЬ ИКОНКИ И ДОБАВИТЬ ТЕМНЫЙ РЕЖИМ ДЛЯ ВСЕГО ПРИЛОЖЕНИЯ!!!!!)
 
         diaryBinding.rcBtnList.setAdapter(adapter);
         diaryBinding.rcBtnList.setLayoutManager(manager);
@@ -133,4 +136,13 @@ public class DiaryActivity extends AppCompatActivity {
             setInitialDateTime();
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
+            diaryBinding.textView17.setText(String.valueOf(data.getSerializableExtra("foodName")));
+        }
+    }
 }

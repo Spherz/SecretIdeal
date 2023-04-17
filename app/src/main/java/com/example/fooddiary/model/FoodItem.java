@@ -8,7 +8,7 @@ public class FoodItem {
     private String foodFats;
     private String carbohydrates;
     private String protein;
-    private boolean isExpandable;
+    private boolean isExpandable, isSelected;
 
     public FoodItem(String foodName, String portion, String rda, String calories, String foodFats, String carbohydrates, String protein) {
         this.foodName = foodName;
@@ -19,6 +19,14 @@ public class FoodItem {
         this.carbohydrates = carbohydrates;
         this.protein = protein;
         this.isExpandable = false;
+    }
+
+    public boolean getSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
     public String getFoodFats() {

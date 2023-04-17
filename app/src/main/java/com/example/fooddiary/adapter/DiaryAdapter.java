@@ -1,6 +1,7 @@
 package com.example.fooddiary.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
 
     @Override
     public void onBindViewHolder(@NonNull DiaryAdapter.DiaryHolder holder, int position) {
+        Intent intent = new Intent();
         ButtonItem buttonItem = buttonsList.get(position);
 
         holder.title.setText(buttonsList.get(position).getTitle());
@@ -53,7 +55,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
 
     public class DiaryHolder extends RecyclerView.ViewHolder {
         RelativeLayout diaryButton, expandableItem;
-        TextView title;
+        TextView title, foodName;
         ImageView imageLeft, imageRight;
 
         public DiaryHolder(@NonNull View itemView) {
@@ -62,6 +64,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
             diaryButton = itemView.findViewById(R.id.diaryButton);
             expandableItem = itemView.findViewById(R.id.expandableList);
             title = itemView.findViewById(R.id.txtTitle);
+            foodName = itemView.findViewById(R.id.txtName);
             imageLeft = itemView.findViewById(R.id.food_icon);
             imageRight = itemView.findViewById(R.id.add_icon);
 
