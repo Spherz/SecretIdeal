@@ -50,9 +50,6 @@ public class UserWeightActivity extends AppCompatActivity {
 
         initRecyclerView(username);
 
-//        System.out.println(dbManager.findByWeight(username));
-//        System.out.println(username);
-
         if(dbManager.findByWeight(username) != null) {
             userWeightBinding.txtWeight.setText(dbManager.findByWeight(username));
         }

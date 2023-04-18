@@ -54,8 +54,10 @@ public class AddFoodActivity extends AppCompatActivity implements AddFoodAdapter
         addFoodBinding.txtSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getIntent().putExtra("foodName", selectedItems);
-                setResult(RESULT_OK, getIntent());
+                System.out.println(adapter.selectList());
+                Intent backIntent = new Intent();
+                backIntent.putExtra("foodName", adapter.selectList());
+                setResult(RESULT_OK, backIntent);
                 finish();
             }
         });

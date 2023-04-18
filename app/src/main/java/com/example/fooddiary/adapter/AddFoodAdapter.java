@@ -5,24 +5,18 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fooddiary.R;
-import com.example.fooddiary.activity.DiaryActivity;
-import com.example.fooddiary.interfaces.FoodListener;
 import com.example.fooddiary.model.FoodItem;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodHolder> {
     private Context context;
@@ -30,7 +24,7 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodH
 
     private OnItemChecked onItemChecked;
 
-    private ArrayList<FoodItem> selectedFoodList = new ArrayList<>();
+    private ArrayList<String> clickedItems = new ArrayList<>();
 
     public AddFoodAdapter(Context context, ArrayList<FoodItem> foodItems) {
         this.context = context;
@@ -74,18 +68,20 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodH
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
+
                 if (!holder.selectFood.isChecked()) {
-                    selectedFoodList.add(foodList.get(holder.getAdapterPosition()));
+//                    selectedFoodList.clear();
+                    clickedItems.add(foodList.get(holder.getAdapterPosition()).getFoodName());
                     holder.selectFood.setChecked(true);
-                    intent.putExtra("foodName", selectedFoodList.get(holder.getAdapterPosition()).getFoodName());
-                    onItemChecked.onItemChecked(intent);
                 } else {
                     holder.selectFood.setChecked(false);
-                    selectedFoodList.remove(foodList.get(holder.getAdapterPosition()));
+                    clickedItems.remove(foodList.get(holder.getAdapterPosition()).getFoodName());
                 }
             }
         });
+//        Intent intent = new Intent();
+//        intent.putExtra("foodName", selectedFoodList.get(holder.getAdapterPosition()).getFoodName());
+//        onItemChecked.onItemChecked(intent);
 
 //        holder.selectFood.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
@@ -114,6 +110,10 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodH
     public void filterList(ArrayList<FoodItem> filteredList) {
         foodList = filteredList;
         notifyDataSetChanged();
+    }
+
+    public ArrayList<String> selectList() {
+        return clickedItems;
     }
 
     public class AddFoodHolder extends RecyclerView.ViewHolder {

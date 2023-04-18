@@ -23,6 +23,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class DiaryActivity extends AppCompatActivity {
     private ActivityDiaryBinding diaryBinding;
@@ -42,6 +43,7 @@ public class DiaryActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
 
+        initButtons();
         setInitialDateTime();
         initRecyclerView();
 
@@ -81,6 +83,25 @@ public class DiaryActivity extends AppCompatActivity {
         });
     }
 
+    public void initButtons() {
+        ButtonItem breakfast = new ButtonItem("Завтрак", R.drawable.sunrise, R.drawable.baseline_add);
+        ButtonItem lunch = new ButtonItem("Обед", R.drawable.sun, R.drawable.baseline_add);
+        ButtonItem dinner = new ButtonItem("Ужин", R.drawable.sunset, R.drawable.baseline_add);
+        ButtonItem snack = new ButtonItem("Перекус/Другое", R.drawable.night, R.drawable.baseline_add);
+
+        buttonItems.add(breakfast);
+        buttonItems.add(lunch);
+        buttonItems.add(dinner);
+        buttonItems.add(snack);
+    }
+
+    public void updateFoodInfo() {
+        Intent intent = getIntent();
+        ArrayList<String> food = (ArrayList<String>) intent.getSerializableExtra("foodName");
+        buttonItems.get(0).setFoodTitle(food.get(0));
+        adapter.notifyItemChanged(0);
+    }
+
     public void initRecyclerView() {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -92,11 +113,6 @@ public class DiaryActivity extends AppCompatActivity {
 
         diaryBinding.rcBtnList.setAdapter(adapter);
         diaryBinding.rcBtnList.setLayoutManager(manager);
-
-        buttonItems.add(new ButtonItem("Завтрак", R.drawable.sunrise, R.drawable.baseline_add));
-        buttonItems.add(new ButtonItem("Обед", R.drawable.sun, R.drawable.baseline_add));
-        buttonItems.add(new ButtonItem("Ужин", R.drawable.sunset, R.drawable.baseline_add));
-        buttonItems.add(new ButtonItem("Перекус/Другое", R.drawable.night, R.drawable.baseline_add));
     }
 
     public void setDate(View v) {
@@ -140,9 +156,13 @@ public class DiaryActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        ArrayList<String> foodExtra = data.getStringArrayListExtra("foodName");
+        System.out.println(foodExtra);
 
         if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
-            diaryBinding.textView17.setText(String.valueOf(data.getSerializableExtra("foodName")));
+            diaryBinding.textView17.setText(foodExtra.get(0));
+            System.out.println(data.getSerializableExtra("foodName"));
+
         }
     }
 }

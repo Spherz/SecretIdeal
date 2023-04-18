@@ -84,6 +84,10 @@ public class DBManager {
         database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper._ID + "=" + _id, null);
     }
 
+    public void deleteAll() {
+        database.delete(DatabaseHelper.TABLE_NAME, null, null);
+    }
+
     public Boolean checkUser(String email) {
         database = dbHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("select * from USERS where email = ?", new String[] {email});
@@ -110,6 +114,12 @@ public class DBManager {
         cursor.close();
         database.close();
         return user;
+    }
+
+    public Cursor findById(String id) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select * from USERS where id = ?", new String[] {id});
+        return cursor;
     }
 
     public String findEmailByUser(String username) {

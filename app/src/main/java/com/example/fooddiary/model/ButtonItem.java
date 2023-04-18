@@ -1,6 +1,8 @@
 package com.example.fooddiary.model;
 
-public class ButtonItem {
+import java.io.Serializable;
+
+public class ButtonItem implements Serializable {
     private String title, foodTitle;
     private int imageLeft, imageRight;
 

@@ -45,6 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("loginStr");
+        String usernameFromReg = intent.getStringExtra("registerStr");
 
         profileBinding.txtUsername.setText(username);
 
@@ -53,6 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent weightIntent = new Intent(ProfileActivity.this, UserWeightActivity.class);
                 weightIntent.putExtra("loginStr", username);
+                weightIntent.putExtra("registerStr", usernameFromReg);
                 startActivity(weightIntent);
             }
         });
@@ -77,11 +79,13 @@ public class ProfileActivity extends AppCompatActivity {
                     case R.id.item2:
                         Intent diaryIntent = new Intent(ProfileActivity.this, DiaryActivity.class);
                         diaryIntent.putExtra("username", username);
+                        diaryIntent.putExtra("username", usernameFromReg);
                         startActivityForResult(diaryIntent, 200);
                         return true;
                     case R.id.item3:
                         Intent settingsIntent = new Intent(ProfileActivity.this, SettingsActivity.class);
                         settingsIntent.putExtra("username", username);
+                        settingsIntent.putExtra("username", usernameFromReg);
                         startActivity(settingsIntent);
                         return true;
                 }

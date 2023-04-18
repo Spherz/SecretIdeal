@@ -56,10 +56,10 @@
             android:layout_height="wrap_content"
             android:text="Выбрать"
             android:textColor="@color/splash_green"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.979"
+            app:layout_constraintHorizontal_bias="0.756"
             app:layout_constraintStart_toEndOf="@+id/txtBreakfast"
             app:layout_constraintTop_toTopOf="parent" />
 

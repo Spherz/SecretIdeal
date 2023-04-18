@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,8 +38,10 @@ public class UserWeightAdapter extends RecyclerView.Adapter<UserWeightAdapter.Us
 
     @Override
     public void onBindViewHolder(@NonNull UserWeightAdapter.UserWeightHolder holder, int position) {
-        if (year.get(position).isEmpty()) {
+        if (year.get(position) == null) {
             holder.year.setVisibility(View.GONE);
+        } else if(year.size() == 0 || year.isEmpty()) {
+            Toast.makeText(context, "Nothing to display", Toast.LENGTH_SHORT).show();
         } else {
             holder.year.setText(year.get(position));
         }

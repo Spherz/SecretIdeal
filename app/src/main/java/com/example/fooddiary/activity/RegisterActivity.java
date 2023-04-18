@@ -38,8 +38,10 @@ public class RegisterActivity extends AppCompatActivity {
                 } else {
                     dbManager.insert(email, fullname, password, phone);
                     Toast.makeText(RegisterActivity.this, "Регистрация выполнена успешно", Toast.LENGTH_SHORT).show();
+                    String username = dbManager.findUsernameByEmail(email);
                     Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
                     intent.putExtra("email", email);
+                    intent.putExtra("registerStr", username);
                     startActivity(intent);
                 }
             }
