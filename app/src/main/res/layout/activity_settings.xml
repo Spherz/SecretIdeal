@@ -297,6 +297,7 @@
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
+            android:visibility="gone"
             app:backgroundTint="@null">
 
             <TextView
