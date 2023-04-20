@@ -37,9 +37,15 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
 
     @Override
     public void onBindViewHolder(@NonNull DiaryAdapter.DiaryHolder holder, int position) {
-        Intent intent = new Intent();
         ButtonItem buttonItem = buttonsList.get(position);
         holder.title.setText(buttonsList.get(position).getTitle());
+        holder.foodName.setText(buttonsList.get(position).getFoodTitle());
+        holder.foodFats.setText(buttonsList.get(position).getFoodFats());
+        holder.foodCarbohydrates.setText(buttonsList.get(position).getFoodCarbohydrates());
+        holder.foodProtein.setText(buttonsList.get(position).getFoodProtein());
+        holder.foodRDA.setText(buttonsList.get(position).getFoodRda());
+        holder.foodPortion.setText(buttonsList.get(position).getFoodPortion());
+        holder.foodCalories.setText(buttonsList.get(position).getFoodCalories());
         holder.imageLeft.setImageResource(buttonsList.get(position).getImageLeft());
         holder.imageRight.setImageResource(buttonsList.get(position).getImageRight());
         boolean isExpandable = buttonsList.get(position).isExpandable();
@@ -53,7 +59,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
 
     public class DiaryHolder extends RecyclerView.ViewHolder {
         RelativeLayout diaryButton, expandableItem;
-        TextView title, foodName;
+        TextView title, foodName, foodFats, foodCarbohydrates, foodProtein, foodRDA, foodCalories, foodPortion;
         ImageView imageLeft, imageRight;
 
         public DiaryHolder(@NonNull View itemView) {
@@ -63,6 +69,12 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
             expandableItem = itemView.findViewById(R.id.expandableList);
             title = itemView.findViewById(R.id.txtTitle);
             foodName = itemView.findViewById(R.id.txtName);
+            foodFats = itemView.findViewById(R.id.txtFats);
+            foodCarbohydrates = itemView.findViewById(R.id.txtCarbohydrates);
+            foodProtein = itemView.findViewById(R.id.txtProtein);
+            foodRDA = itemView.findViewById(R.id.txtRda);
+            foodPortion = itemView.findViewById(R.id.tvFoodPortion);
+            foodCalories = itemView.findViewById(R.id.txtCalories);
             imageLeft = itemView.findViewById(R.id.food_icon);
             imageRight = itemView.findViewById(R.id.add_icon);
 

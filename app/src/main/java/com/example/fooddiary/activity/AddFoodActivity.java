@@ -13,10 +13,13 @@ import android.text.TextWatcher;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.fooddiary.R;
 import com.example.fooddiary.adapter.AddFoodAdapter;
 import com.example.fooddiary.databinding.ActivityAddFoodBinding;
 import com.example.fooddiary.interfaces.FoodListener;
@@ -25,6 +28,7 @@ import com.example.fooddiary.util.DBManager;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class AddFoodActivity extends AppCompatActivity implements AddFoodAdapter.OnItemChecked {
 
@@ -33,8 +37,12 @@ public class AddFoodActivity extends AppCompatActivity implements AddFoodAdapter
 
     ArrayList<String> selectedItems = new ArrayList<>();
 
+    HashMap<String, ArrayList<String>> foodByTime = new HashMap<>();
+
     private DBManager dbManager;
     AddFoodAdapter adapter;
+
+    String[] spinnerData = {"Завтрак", "Обед", "Ужин", "Перекус/Другое"};
 
     Calendar dateAndTime = Calendar.getInstance();
     @Override
@@ -42,6 +50,12 @@ public class AddFoodActivity extends AppCompatActivity implements AddFoodAdapter
         super.onCreate(savedInstanceState);
         addFoodBinding = ActivityAddFoodBinding.inflate(getLayoutInflater());
         setContentView(addFoodBinding.getRoot());
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerData);
+
+        addFoodBinding.spinner.setAdapter(arrayAdapter);
+
+//        addFoodBinding.spinner.setSelection(0);
 
         dbManager = new DBManager(this);
         dbManager.open();
@@ -57,8 +71,21 @@ public class AddFoodActivity extends AppCompatActivity implements AddFoodAdapter
                 System.out.println(adapter.selectList());
                 Intent backIntent = new Intent();
                 backIntent.putExtra("foodName", adapter.selectList());
+                backIntent.putExtra("foodByTime", foodByTime);
                 setResult(RESULT_OK, backIntent);
                 finish();
+            }
+        });
+
+        addFoodBinding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                foodByTime.put(addFoodBinding.spinner.getSelectedItem().toString(), adapter.selectList());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
@@ -147,7 +174,6 @@ public class AddFoodActivity extends AppCompatActivity implements AddFoodAdapter
 
     @Override
     public void onItemChecked(Intent intent) {
-        Log.e("Data=========>", intent.getStringExtra("foodName"));
         selectedItems.add(intent.getStringExtra("foodName"));
         addFoodBinding.txtSubmit.setVisibility(View.VISIBLE);
         addFoodBinding.txtCancel.setVisibility(View.GONE);

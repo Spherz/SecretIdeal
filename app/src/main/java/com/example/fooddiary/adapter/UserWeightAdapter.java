@@ -48,7 +48,6 @@ public class UserWeightAdapter extends RecyclerView.Adapter<UserWeightAdapter.Us
         holder.date.setText(date.get(position));
         holder.weight.setText(weight.get(position));
     }
-
     @Override
     public int getItemCount() {
         return date.size();

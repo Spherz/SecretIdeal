@@ -70,6 +70,12 @@ public class DBManager {
         return cursor;
     }
 
+    public Cursor findNutrionDataByFoodName(String foodName) {
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select food_fats, food_carbohydrates, food_protein, food_rda, food_calories, food_portion from FOOD where food_name=?", new String[] {foodName});
+        return cursor;
+    }
+
     public int update(long _id, String email, String fullname, String password, String phone) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.EMAIL, email);
@@ -82,6 +88,11 @@ public class DBManager {
 
     public void delete(long _id) {
         database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper._ID + "=" + _id, null);
+    }
+
+    public void deleteByUsername(String username) {
+        database = dbHelper.getWritableDatabase();
+        database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper.FULLNAME + "=?", new String[] {username});
     }
 
     public void deleteAll() {

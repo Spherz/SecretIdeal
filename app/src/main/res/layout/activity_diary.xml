@@ -53,6 +53,9 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:backgroundTint="@color/splash_green"
+        app:itemIconTint="@drawable/bottom_nav_selector"
+        app:itemTextColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,35 +133,35 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView17"
+                    android:id="@+id/txtDiaryFoodFats"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="-"
                     android:textAlignment="textEnd" />
 
                 <TextView
-                    android:id="@+id/textView18"
+                    android:id="@+id/txtDiaryFoodCarbohydrates"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="-"
                     android:textAlignment="textEnd" />
 
                 <TextView
-                    android:id="@+id/textView19"
+                    android:id="@+id/txtDiaryFoodProtein"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="-"
                     android:textAlignment="textEnd" />
 
                 <TextView
-                    android:id="@+id/textView20"
+                    android:id="@+id/txtDiaryFoodRDA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="-"
                     android:textAlignment="textEnd" />
 
                 <TextView
-                    android:id="@+id/textView21"
+                    android:id="@+id/txtDiaryFoodCalories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"

@@ -19,9 +19,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class AddUserWeightActivity extends AppCompatActivity {
@@ -87,14 +89,18 @@ public class AddUserWeightActivity extends AppCompatActivity {
         addUserWeightBinding.imgSubmitWeight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent dateYear = new Intent();
                 Date currentDate = new Date();
                 DateFormat dateFormat = new SimpleDateFormat("dd MMM", Locale.getDefault());
                 String dateText = dateFormat.format(currentDate);
                 DateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
                 String yearText = yearFormat.format(currentDate);
+
+                ArrayList<String> dateData = new ArrayList<>();
                 getIntent().putExtra("editedWeight", String.format("%.1f", editedWeight));
+                getIntent().putExtra("dateYear", dateData);
                 dbManager.updateUserWeight(username, String.valueOf(editedWeight), dateText, yearText);
-                setResult(RESULT_OK, getIntent());
+                setResult(RESULT_OK, getIntent().putExtra("username", username));
                 finish();
             }
         });

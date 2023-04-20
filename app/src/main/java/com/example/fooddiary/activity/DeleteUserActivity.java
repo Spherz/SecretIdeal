@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.fooddiary.databinding.ActivityDeleteUserBinding;
+import com.example.fooddiary.util.DBManager;
 
 public class DeleteUserActivity extends AppCompatActivity {
 
     private ActivityDeleteUserBinding deleteUserBinding;
+
+    DBManager dbManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,10 +20,16 @@ public class DeleteUserActivity extends AppCompatActivity {
         deleteUserBinding = ActivityDeleteUserBinding.inflate(getLayoutInflater());
         setContentView(deleteUserBinding.getRoot());
 
+        dbManager = new DBManager(this);
+        dbManager.open();
+        System.out.println(getIntent().getStringExtra("username"));
+
         deleteUserBinding.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Добавить удаление аккаунта пользователя
+                dbManager.deleteByUsername(getIntent().getStringExtra("username"));
+                finishAffinity();
+                System.exit(0);
             }
         });
 

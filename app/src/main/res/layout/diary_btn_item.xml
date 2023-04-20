@@ -86,8 +86,7 @@
                 android:id="@+id/txtRda"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="235dp"
-                android:text="25%" />
+                android:layout_marginLeft="235dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -122,44 +121,7 @@
                         android:layout_below="@+id/txtName"
                         android:layout_alignParentBottom="false"
                         android:layout_marginLeft="55dp"
-                        android:text="1 порция (150г)"
                         android:textColor="@color/splash_green" />
-
-                    <TextView
-                        android:id="@+id/tvFoodFats"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvFoodPortion"
-                        android:layout_alignParentBottom="false"
-                        android:layout_marginLeft="55dp"
-                        android:text="15,04" />
-
-                    <TextView
-                        android:id="@+id/tvFoodCarbohydrates"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvFoodPortion"
-                        android:layout_alignParentBottom="false"
-                        android:layout_marginLeft="115dp"
-                        android:text="12,24" />
-
-                    <TextView
-                        android:id="@+id/tvProtein"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvFoodPortion"
-                        android:layout_alignParentBottom="false"
-                        android:layout_marginLeft="175dp"
-                        android:text="29,01" />
-
-                    <TextView
-                        android:id="@+id/tvRda"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvFoodPortion"
-                        android:layout_alignParentBottom="false"
-                        android:layout_marginLeft="235dp"
-                        android:text="25%" />
 
                 </RelativeLayout>
 

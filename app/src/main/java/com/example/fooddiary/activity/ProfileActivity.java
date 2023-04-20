@@ -49,6 +49,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         profileBinding.txtUsername.setText(username);
 
+
+
         profileBinding.btnUserWeight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,13 +81,13 @@ public class ProfileActivity extends AppCompatActivity {
                     case R.id.item2:
                         Intent diaryIntent = new Intent(ProfileActivity.this, DiaryActivity.class);
                         diaryIntent.putExtra("username", username);
-                        diaryIntent.putExtra("username", usernameFromReg);
+                        diaryIntent.putExtra("userFromReg", usernameFromReg);
                         startActivityForResult(diaryIntent, 200);
                         return true;
                     case R.id.item3:
                         Intent settingsIntent = new Intent(ProfileActivity.this, SettingsActivity.class);
                         settingsIntent.putExtra("username", username);
-                        settingsIntent.putExtra("username", usernameFromReg);
+                        settingsIntent.putExtra("userFromReg", usernameFromReg);
                         startActivity(settingsIntent);
                         return true;
                 }

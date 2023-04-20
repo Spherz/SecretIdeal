@@ -49,6 +49,7 @@ public class ManageAccountsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent deleteUserIntent = new Intent(ManageAccountsActivity.this, DeleteUserActivity.class);
+                deleteUserIntent.putExtra("username", username);
                 startActivity(deleteUserIntent);
             }
         });
@@ -60,7 +61,7 @@ public class ManageAccountsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 100 && resultCode == RESULT_OK && data != null) {
-            manageAccountsBinding.txtManageUsername.setText(data.getStringExtra("username"));
+            manageAccountsBinding.txtManageUsername.setText(data.getStringExtra("newUsername"));
         }
     }
 }

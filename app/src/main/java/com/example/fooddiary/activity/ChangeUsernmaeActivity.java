@@ -38,9 +38,10 @@ public class ChangeUsernmaeActivity extends AppCompatActivity {
         changeUsernmaeBinding.btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent updatedUsername = new Intent();
                 dbManager.updateUsername(username, changeUsernmaeBinding.editUsername.getText().toString());
                 Toast.makeText(ChangeUsernmaeActivity.this, "Имя пользователя успешно изменено", Toast.LENGTH_SHORT).show();
-                setResult(RESULT_OK, getIntent().putExtra("newUsername", changeUsernmaeBinding.editUsername.getText().toString()));
+                setResult(RESULT_OK, updatedUsername.putExtra("newUsername", changeUsernmaeBinding.editUsername.getText().toString()));
                 finish();
             }
         });

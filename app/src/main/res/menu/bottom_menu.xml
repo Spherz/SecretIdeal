@@ -3,20 +3,20 @@
     <item
         android:id="@+id/item1"
         android:title="Профиль"
+        android:icon="@drawable/profile"
         android:orderInCategory="1"
         />
-<!--        android:icon="@drawable/ic_item1"-->
     <item
         android:id="@+id/item2"
         android:title="Дневник"
+        android:icon="@drawable/diary"
         android:orderInCategory="2"
         />
-<!--        android:icon="@drawable/ic_item2"-->
     <item
         android:id="@+id/item3"
         android:title="Другое"
+        android:icon="@drawable/settings"
         android:orderInCategory="3"
         />
-<!--        android:icon="@drawable/ic_item3"-->
 
 </menu>

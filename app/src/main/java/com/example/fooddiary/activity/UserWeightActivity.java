@@ -7,16 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.fooddiary.R;
-import com.example.fooddiary.adapter.DiaryAdapter;
 import com.example.fooddiary.adapter.UserWeightAdapter;
 import com.example.fooddiary.databinding.ActivityUserWeightBinding;
-import com.example.fooddiary.model.ButtonItem;
-import com.example.fooddiary.model.FoodItem;
 import com.example.fooddiary.util.DBManager;
 
 import java.util.ArrayList;
@@ -31,7 +26,7 @@ public class UserWeightActivity extends AppCompatActivity {
     ArrayList<String> year = new ArrayList<String>();
 
     ArrayList<String> years = new ArrayList<String>();
-    ArrayList<String> date = new ArrayList<String>();
+    ArrayList<String> dates = new ArrayList<String>();
     ArrayList<String> weight = new ArrayList<String>();
 
     DBManager dbManager;
@@ -73,7 +68,6 @@ public class UserWeightActivity extends AppCompatActivity {
     }
 
     private void displayWeight(String username) {
-        Log.e("Username =======>", username);
         Cursor cursor = dbManager.findYearByUsername(username);
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "No Entry Exists", Toast.LENGTH_SHORT).show();
@@ -81,7 +75,7 @@ public class UserWeightActivity extends AppCompatActivity {
         } else {
             while (cursor.moveToNext()) {
                 year.add(cursor.getString(0));
-                date.add(cursor.getString(1));
+                dates.add(cursor.getString(1));
                 weight.add(cursor.getString(2));
             }
         }
@@ -90,9 +84,7 @@ public class UserWeightActivity extends AppCompatActivity {
     public void initRecyclerView(String username) {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
-        // TODO Переделать при добавлении веса
         displayWeight(username);
-
         for (String yeas : year) {
             if (years.contains(yeas)) {
                 years.add("");
@@ -101,7 +93,7 @@ public class UserWeightActivity extends AppCompatActivity {
             }
         }
 
-        adapter = new UserWeightAdapter(this, years, date, weight);
+        adapter = new UserWeightAdapter(this, years, dates, weight);
 
         userWeightBinding.rcWeightByDate.setHasFixedSize(true);
 
@@ -113,8 +105,33 @@ public class UserWeightActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        ArrayList<String> dateYear = data.getStringArrayListExtra("dateYear");
+
         if(requestCode == 100 && resultCode == RESULT_OK && data != null) {
             userWeightBinding.txtWeight.setText(data.getStringExtra("editedWeight"));
+            refreshWeight(userWeightBinding.txtWeight.getText().toString());
+            System.out.println(dateYear);
+//            refreshYear(dateYear.get(0));
+//            refreshDate(dateYear.get(1));
         }
+    }
+
+    private void refreshWeight(String updatedWeight) {
+        if(!updatedWeight.isEmpty()) {
+            weight.set(0, updatedWeight);
+        }
+        adapter.notifyDataSetChanged();
+    }
+    private void refreshYear(String year) {
+        if(!year.isEmpty()) {
+            years.set(0, year);
+        }
+        adapter.notifyDataSetChanged();
+    }
+    private void refreshDate(String date) {
+        if(!date.isEmpty()) {
+            dates.set(0, date);
+        }
+        adapter.notifyDataSetChanged();
     }
 }

@@ -79,26 +79,6 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodH
                 }
             }
         });
-//        Intent intent = new Intent();
-//        intent.putExtra("foodName", selectedFoodList.get(holder.getAdapterPosition()).getFoodName());
-//        onItemChecked.onItemChecked(intent);
-
-//        holder.selectFood.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked){
-//                    selectedFoodList.add(foodList.get(holder.getAdapterPosition()));
-//                } else {
-//                    selectedFoodList.remove(foodList.get(holder.getAdapterPosition()));
-//                }
-//                System.out.println(selectedFoodList.toString());
-////                Intent intent = new Intent();
-////
-////                intent.putExtra("foodName", foodList.get(holder.getAdapterPosition()).getFoodName());
-////                onItemChecked.onItemChecked(intent);
-//            }
-//        });
-
         holder.selectFood.setChecked(foodItem.getSelected());
     }
 

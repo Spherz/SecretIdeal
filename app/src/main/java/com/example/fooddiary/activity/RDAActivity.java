@@ -38,6 +38,8 @@ public class RDAActivity extends AppCompatActivity {
             rdaActivityBinding.txtUserWeight.setText(dbManager.findByWeight(username));
             rdaActivityBinding.txtUserHeight.setText(dbManager.findHeightByUsername(username));
             rdaActivityBinding.txtGoal.setText(dbManager.findGoalByUsername(username));
+        } else {
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         }
 
         System.out.println(dbManager.findUserActivityByUsername(username));
